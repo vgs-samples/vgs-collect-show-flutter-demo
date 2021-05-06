@@ -1,0 +1,105 @@
+data:
+  - attributes:
+      created_at: '2021-02-05T10:57:58.833130'
+      destination_override_endpoint: 'https://echo.apps.verygood.systems'
+      entries:
+        - classifiers: {}
+          config:
+            condition: AND
+            rules:
+              - condition: null
+                expression:
+                  field: PathInfo
+                  operator: matches
+                  type: string
+                  values:
+                    - /post
+          created_at: '2021-02-05T10:57:58.835593'
+          id: 4f470c4d-5e04-4407-bfb2-c9bbd9537cb8
+          operation: REDACT
+          operations: null
+          phase: REQUEST
+          public_token_generator: UUID
+          targets:
+            - body
+          token_manager: PERSISTENT
+          transformer: JSON_PATH
+          transformer_config:
+            - $.cardNumber
+            - $.expDate
+          transformer_config_map: null
+        - classifiers: {}
+          config:
+            condition: AND
+            rules:
+              - condition: null
+                expression:
+                  field: PathInfo
+                  operator: matches
+                  type: string
+                  values:
+                    - /post
+              - condition: null
+                expression:
+                  field: ContentType
+                  operator: equals
+                  type: string
+                  values:
+                    - application/json
+          created_at: '2021-02-05T10:57:58.835597'
+          id: c70bb0d0-21d2-4574-96b8-2ea2e5136942
+          operation: ENRICH
+          operations: null
+          phase: RESPONSE
+          public_token_generator: UUID
+          targets:
+            - body
+          token_manager: PERSISTENT
+          transformer: JSON_PATH
+          transformer_config:
+            - $.json.payment_card_number
+          transformer_config_map: null
+        - classifiers: {}
+          config:
+            condition: AND
+            rules:
+              - condition: null
+                expression:
+                  field: PathInfo
+                  operator: matches
+                  type: string
+                  values:
+                    - /post
+              - condition: null
+                expression:
+                  field: ContentType
+                  operator: equals
+                  type: string
+                  values:
+                    - application/json
+          created_at: '2021-02-05T10:57:58.835598'
+          id: 858419b9-65d0-4871-9c77-5cacca4849f7
+          operation: ENRICH
+          operations: null
+          phase: RESPONSE
+          public_token_generator: UUID
+          targets:
+            - body
+          token_manager: PERSISTENT
+          transformer: JSON_PATH
+          transformer_config:
+            - $.json.payment_card_expiration_date
+          transformer_config_map: null
+      host_endpoint: >-
+        ((.*)\.verygoodproxy\.com)|(collect-android-testing\.verygoodsecurity\.io)
+      id: 2e7e6550-ba36-4e95-be95-87fafc921ccc
+      port: 80
+      protocol: http
+      source_endpoint: '*'
+      tags:
+        analytic_id: '2072681010063150'
+        name: echo.apps.verygood.systems-thistle-circle
+        source: vgs-satellite
+    id: 2e7e6550-ba36-4e95-be95-87fafc921ccc
+    type: rule_chain
+version: 1

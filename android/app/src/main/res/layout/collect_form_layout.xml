@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
+
+    <com.verygoodsecurity.vgscollect.widget.VGSTextInputLayout
+        android:id="@+id/tilCardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundModes="outline"
+        app:boxCornerRadius="8dp"
+        app:boxStrokeColor="#5c6b7a"
+        app:hint="Card Number"
+        app:hintEnabled="true"
+        app:hintTextAppearance="@style/EditTextHintTextAppearance">
+
+        <com.verygoodsecurity.vgscollect.widget.VGSCardNumberEditText
+            android:id="@+id/etCardNumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:padding="4dp"
+            app:cardBrandIconGravity="end"
+            app:fieldName="cardNumber"
+            app:imeOptions="actionNext"
+            app:numberDivider=" "
+            app:textColor="@color/colorPrimaryDark"
+            app:textSize="12dp"
+            tools:ignore="SpUsage" />
+    </com.verygoodsecurity.vgscollect.widget.VGSTextInputLayout>
+
+    <TextView
+        android:id="@+id/tvCardNumberAlias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
+        android:singleLine="true" />
+
+    <com.verygoodsecurity.vgscollect.widget.VGSTextInputLayout
+        android:id="@+id/tilExpDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:boxBackgroundModes="outline"
+        app:boxCornerRadius="8dp"
+        app:boxStrokeColor="@color/colorAccent"
+        app:hint="Expiration Date"
+        app:hintEnabled="true"
+        app:hintTextAppearance="@style/EditTextHintTextAppearance">
+
+        <com.verygoodsecurity.vgscollect.widget.ExpirationDateEditText
+            android:id="@+id/etExpDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:padding="4dp"
+            app:fieldName="expDate"
+            app:textColor="@color/colorPrimaryDark"
+            app:textSize="12dp"
+            tools:ignore="SpUsage" />
+    </com.verygoodsecurity.vgscollect.widget.VGSTextInputLayout>
+
+    <TextView
+        android:id="@+id/tvExpDateAlias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
+        android:singleLine="true" />
+</LinearLayout>

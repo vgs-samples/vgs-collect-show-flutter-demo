@@ -1,0 +1,24 @@
+PODS:
+  - VGSCollectSDK (1.7.6):
+    - VGSCollectSDK/Core (= 1.7.6)
+  - VGSCollectSDK/Core (1.7.6)
+  - VGSShowSDK (1.0.4):
+    - VGSShowSDK/Core (= 1.0.4)
+  - VGSShowSDK/Core (1.0.4)
+
+DEPENDENCIES:
+  - VGSCollectSDK
+  - VGSShowSDK
+
+SPEC REPOS:
+  trunk:
+    - VGSCollectSDK
+    - VGSShowSDK
+
+SPEC CHECKSUMS:
+  VGSCollectSDK: 411b6cf96bffa24e7b391a0124079e81ec11e533
+  VGSShowSDK: 82d8c1c1d1e3cf32c81b26057f7e7aaa20f91cfc
+
+PODFILE CHECKSUM: bdf0c3b0ecdd65060aba707d16f8f8cd9e3794b7
+
+COCOAPODS: 1.10.1
