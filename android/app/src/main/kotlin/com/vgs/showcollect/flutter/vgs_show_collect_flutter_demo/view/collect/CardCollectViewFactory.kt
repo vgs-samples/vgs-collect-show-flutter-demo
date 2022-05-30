@@ -6,10 +6,13 @@ import io.flutter.plugin.common.StandardMessageCodec
 import io.flutter.plugin.platform.PlatformView
 import io.flutter.plugin.platform.PlatformViewFactory
 
-class CardCollectViewFactory constructor(private val messenger: BinaryMessenger? = null) :
+class CardCollectViewFactory constructor(private val messenger: BinaryMessenger) :
         PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, id: Int, args: Any?): PlatformView {
-        return CardCollectFormView(context, messenger, id)
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
+        if (context == null) {
+            throw IllegalArgumentException("Context can't be null.")
+        }
+        return CardCollectFormView(context, messenger, viewId)
     }
 }

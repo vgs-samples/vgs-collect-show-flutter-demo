@@ -14,7 +14,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.Future
 
 @Suppress("LeakingThis")
-abstract class BaseFormView constructor(context: Context, messenger: BinaryMessenger?, id: Int, @LayoutRes layoutId: Int) :
+abstract class BaseFormView constructor(context: Context, messenger: BinaryMessenger, id: Int, @LayoutRes layoutId: Int) :
         PlatformView, MethodChannel.MethodCallHandler {
 
     abstract val viewType: String
