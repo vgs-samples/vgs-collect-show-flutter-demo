@@ -14,7 +14,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import org.json.JSONObject
 
-class CardCollectFormView constructor(context: Context, messenger: BinaryMessenger?, id: Int) :
+class CardCollectFormView constructor(context: Context, messenger: BinaryMessenger, id: Int) :
         BaseFormView(context, messenger, id, R.layout.collect_form_layout) {
 
     override val viewType: String get() = MainActivity.COLLECT_FORM_VIEW_TYPE

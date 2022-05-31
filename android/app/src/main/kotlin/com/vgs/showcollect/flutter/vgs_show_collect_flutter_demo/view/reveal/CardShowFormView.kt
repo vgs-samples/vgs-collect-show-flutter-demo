@@ -10,7 +10,7 @@ import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-class CardShowFormView constructor(context: Context, messenger: BinaryMessenger?, id: Int) :
+class CardShowFormView constructor(context: Context, messenger: BinaryMessenger, id: Int) :
         BaseFormView(context, messenger, id, R.layout.show_form_layout) {
 
     override val viewType: String get() = MainActivity.SHOW_FORM_VIEW_TYPE
