@@ -52,11 +52,6 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-
-    print "----------------------"
-    print "flutterVersionCode:"
-    print flutterVersionCode
-    print "----------------------"
 }
 
 flutter {
