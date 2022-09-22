@@ -22,7 +22,7 @@ abstract class BaseFormView constructor(context: Context, messenger: BinaryMesse
     protected val rootView: View = LayoutInflater.from(context).inflate(layoutId, null)
 
     protected val methodChannel = MethodChannel(messenger, "$viewType/$id".also {
-        Log.d("Test", it)
+        Log.d("BaseFormView", it)
     })
 
     private val mainHandler: android.os.Handler = android.os.Handler(Looper.getMainLooper())

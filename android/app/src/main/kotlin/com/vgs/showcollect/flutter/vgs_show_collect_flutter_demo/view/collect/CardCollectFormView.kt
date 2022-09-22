@@ -14,12 +14,14 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import org.json.JSONObject
 
-class CardCollectFormView constructor(context: Context, messenger: BinaryMessenger, id: Int) :
-        BaseFormView(context, messenger, id, R.layout.collect_form_layout) {
+class CardCollectFormView constructor(
+    context: Context,
+    messenger: BinaryMessenger,
+    id: Int,
+    private val vgsCollect: VGSCollect
+) : BaseFormView(context, messenger, id, R.layout.collect_form_layout) {
 
     override val viewType: String get() = MainActivity.COLLECT_FORM_VIEW_TYPE
-
-    private val vgsCollect = VGSCollect(context, MainActivity.VAULT_ID, MainActivity.ENVIRONMENT)
 
     private val cardNumberAlias = rootView.findViewById<TextView>(R.id.tvCardNumberAlias)
     private val cardDateAlias = rootView.findViewById<TextView>(R.id.tvExpDateAlias)

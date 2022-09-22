@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -39,8 +39,8 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.vgs.showcollect.flutter.vgs_show_collect_flutter_demo"
-        minSdkVersion 19
-        targetSdkVersion 32
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -59,9 +59,9 @@ flutter {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:1.4.2"
+    implementation "androidx.appcompat:appcompat:1.6.0-rc01"
     implementation "com.google.android.material:material:1.6.1"
 
-    implementation 'com.verygoodsecurity:vgscollect:1.6.19'
+    implementation 'com.verygoodsecurity:vgscollect:1.7.2'
     implementation 'com.verygoodsecurity:vgsshow:1.2.0'
 }
