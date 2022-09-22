@@ -25,7 +25,7 @@ class MainActivity : FlutterActivity() {
 
     companion object {
 
-        const val VAULT_ID = "tntpszqgikn"
+        const val VAULT_ID = "<YOUR_VAULT_ID>"
         const val ENVIRONMENT = "sandbox"
 
         const val COLLECT_FORM_VIEW_TYPE = "card-collect-form-view";
