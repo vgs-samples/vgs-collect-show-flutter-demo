@@ -868,32 +868,11 @@ Future<dynamic> invokedMethods(MethodCall methodCall) async {
 
 ## iOS VGSShow integration guide
 
-Check [VGSShow use case](https://github.com/EugeneIOs/test-flutter-app/tree/main/lib/presentation/pages/collect_show) section for VGSShow integration guide.
+Check [VGSShow use case](https://github.com/vss-samples/test-flutter-app/tree/main/lib/presentation/pages/collect_show) section for VGSShow integration guide.
 
 ## Android integration guide
 
-General integration overview:
-
-<p align="center">
-	<img src="images/checkout_flutter_android_integration.png" alt="VGS Checkout Android Flutter integration diagram">
-</p>
-
-1. Add latest version of VGS Checkout SDK into your `android/app/build.gradle`:
-
-```groovy
-dependencies {
-
-    implementation "com.verygoodsecurity:vgscheckout:latest_version"
-}
-```
-
-2. Review official Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels) how to integrate native and Flutter code.
-
-3. Check our implementation [example](https://github.com/vgs-samples/vgs-checkout-flutter-demo/blob/main/android/app/src/main/kotlin/com/example/vgs_checkout_flutter_demo).
-
-> **_NOTE:_** We used `FlutterFragment` reference to initialize `VGSCheckout` because current `FlutterActivity`
-> does not support `registerForActivityResult` feature which is required by `VGSCheckout`. This setup flow
-> can be refactored in next Flutter updates if `FlutterActivity` parent will be updated to `AppCompatActivity`.
+TODO: add Android
 
 ## Android CardIO integration guide
 
