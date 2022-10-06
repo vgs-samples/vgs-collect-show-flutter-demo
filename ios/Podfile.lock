@@ -1,0 +1,31 @@
+PODS:
+  - CardIOSDK (5.5.7)
+  - VGSCollectSDK (1.11.2):
+    - VGSCollectSDK/Core (= 1.11.2)
+  - VGSCollectSDK/CardIO (1.11.2):
+    - CardIOSDK (= 5.5.7)
+    - VGSCollectSDK/Core
+  - VGSCollectSDK/Core (1.11.2)
+  - VGSShowSDK (1.1.4):
+    - VGSShowSDK/Core (= 1.1.4)
+  - VGSShowSDK/Core (1.1.4)
+
+DEPENDENCIES:
+  - VGSCollectSDK
+  - VGSCollectSDK/CardIO
+  - VGSShowSDK
+
+SPEC REPOS:
+  trunk:
+    - CardIOSDK
+    - VGSCollectSDK
+    - VGSShowSDK
+
+SPEC CHECKSUMS:
+  CardIOSDK: 56bb14c8c0af19f1c3e1ef36215b6801b68df34c
+  VGSCollectSDK: 2eee091d202f975b54e4984b59f69ae58ca8e1d7
+  VGSShowSDK: 994bfab4f0774a7ccc7fcf55530f09b8ddd6b6d5
+
+PODFILE CHECKSUM: 79a9bd29ab40aa5361d22eaadbd821d767d8a795
+
+COCOAPODS: 1.11.3
