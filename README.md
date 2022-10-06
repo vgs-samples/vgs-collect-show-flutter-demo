@@ -89,7 +89,7 @@ Integration to Flutter project can be separated into two parts.
 <b>Implementing MethodChannel for communication between dart and native code:</b>
 
 <p align="center">
-    <img src="images/vgs-collect_method_channel_overview_iOS.png" alt="VGSCollect iOS Flutter method channel integration diagram">
+    <img src="images/vgs_collect_method_channel_overview_iOS.png" alt="VGSCollect iOS Flutter method channel integration diagram">
 </p>
 
 1. Add dependencies into your `Podfile` in `ios` folder:
