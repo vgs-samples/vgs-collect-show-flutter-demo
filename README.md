@@ -11,6 +11,7 @@ We don't have official Flutter package. You can easily integrate VGS Collect SDK
 - [Run VGSShow use case](#run-vgsshow-use-case)
 - [iOS VGSCollect integration guide](#ios-vgscollect-integration-guide)
 - [Android VGSCollect integration guide](#android-integration-guide)
+- [Flutter integration guide](#flutter-integration-guide)
 
 <!--te-->
 
@@ -113,18 +114,25 @@ Make sure deployment minimal iOS version of your target and project is set to `i
   pod update
 ```
 
+For `CardIO` include `NSCameraUsageDescription` key in iOS project `info.plist` to enable Camera in your iOS application.
+
+```xml
+    <key>NSCameraUsageDescription</key>
+    <string>Camera usage description</string>
+```
+
 2. Review official
    Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
    how to integrate native and Flutter code.
 
 3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/feature/IOSSDK/update-demo/ios/Runner/UseCases/CustomCardData/CollectView).
 
-| File                                          | Description                                                                        |
-| --------------------------------------------- | ---------------------------------------------------------------------------------- |
-| CustomCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                 |
-| FlutterCustomCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. |
-| FlutterCustomCardDataCollectViewFactory.swift | Platform view factory.                                                             |
-| FlutterCustomCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                    |
+| File                                          | Description                                                                                                                          |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| CustomCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                                                                   |
+| FlutterCustomCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. Encapsulates FlutterMethodChannel implementation. |
+| FlutterCustomCardDataCollectViewFactory.swift | Platform view factory.                                                                                                               |
+| FlutterCustomCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                                                                      |
 
 ## Android integration guide
 
@@ -157,7 +165,7 @@ dependencies {
    Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
    how to integrate native and Flutter code.
 
-3. Check our [implementation](https://github.com/EugeneIOs/test-flutter-app/tree/main/android/app/src/main/kotlin/com/example/vgs_collect_flutter_demo).
+3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/test-flutter-app/tree/main/android/app/src/main/kotlin/com/example/vgs_collect_flutter_demo).
 
 | Package                                                | Description                                                  |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
@@ -165,3 +173,55 @@ dependencies {
 | com.example.vgs_collect_flutter_demo.view              | All platform views and factories.                            |
 | com.example.vgs_collect_flutter_demo.view.collect      | Platform view and factory used in custom example.            |
 | com.example.vgs_collect_flutter_demo.view.collect_show | Platform views and factories used in collect & show example. |
+
+## Flutter integration guide
+
+For iOS and Android you need to create Fluttter wrappers depending on platform.
+
+```dart
+  Widget _cardCollectView() {
+    if (Platform.isAndroid) {
+      return _cardCollectNativeAndroid();
+    } else if (Platform.isIOS) {
+      return _cardCollectNativeiOS();
+    } else {
+      throw Exception('Platform is not supported!');
+    }
+  }
+
+  Widget _cardCollectNativeiOS() {
+    final Map<String, dynamic> creationParams = <String, dynamic>{};
+    return Column(children: [
+      SizedBox(
+          height: 290.0,
+          child: UiKitView(
+              viewType: customCardDataCollectViewType,
+              onPlatformViewCreated: _createCardCollectController,
+              creationParams: creationParams,
+              creationParamsCodec: StandardMessageCodec()))
+    ]);
+  }
+
+  Widget _cardCollectNativeAndroid() {
+    // Pass parameters to the platform side.
+    final Map<String, dynamic> creationParams = <String, dynamic>{};
+
+    return SizedBox(
+      height: 300,
+      child: AndroidView(
+        viewType: customCardDataCollectViewType,
+        onPlatformViewCreated: _createCardCollectController,
+        layoutDirection: TextDirection.ltr,
+        creationParams: creationParams,
+        creationParamsCodec: const StandardMessageCodec(),
+      ),
+    );
+  }
+```
+
+Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/test-flutter-app/tree/main/android/app/src/main/kotlin/com/example/vgs_collect_flutter_demo).
+
+| File                             | Description                                                    |
+| -------------------------------- | -------------------------------------------------------------- |
+| custom_card_data_controller.dart | Holds Flutter method channel and method invocation logic.      |
+| custom_card_data.dart            | Holds Flutter platform views with collect card data page demo. |
