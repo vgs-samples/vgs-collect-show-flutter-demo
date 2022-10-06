@@ -67,7 +67,9 @@ class CollectShowConstants {
 Click on "open a file", then navigate to the main.dart file and then click debug and run.
 
 <p align="center">
-	<img src="images/vgs-collect-flutter-demo-iOS.gif?raw=true" width="200" alt="VGS Collect iOS Flutter demo">
+   <img src="images/vgs_collect_flutter_demo_iOS.gif?raw=true" width="200" alt="VGS Collect iOS Flutter demo" hspace="20">
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+   <img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Android Flutter demo" hspace="20">
 </p>
 
 ## Run VGSShow use case
@@ -81,13 +83,13 @@ Integration to Flutter project can be separated into two parts.
 <b>Implementing PlatformView wrappers for native iOS views:</b>
 
 <p align="center">
-	<img src="images/VGSCollect_platform_view_overview_iOS.png" alt="VGSCollect iOS Flutter view integration diagram">
+	<img src="images/vgs_collect_platform_view_overview_iOS.png" alt="VGSCollect iOS Flutter view integration diagram">
 </p>
 
 <b>Implementing MethodChannel for communication between dart and native code:</b>
 
 <p align="center">
-    <img src="images/VGSCollect_method_channel_overview_iOS.png" alt="VGSCollect iOS Flutter method channel integration diagram">
+    <img src="images/vgs_collect_method_channel_overview_iOS.png" alt="VGSCollect iOS Flutter method channel integration diagram">
 </p>
 
 1. Add dependencies into your `Podfile` in `ios` folder:
@@ -139,13 +141,13 @@ Integration to Flutter project can be separated into two parts.
 <b>Implementing PlatformView wrappers for native Android views:</b>
 
 <p align="center">
-	<img src="images/VGSCollect_platform_view_overview_Android.png" alt="VGSCollect Android Flutter view integration diagram">
+	<img src="images/vgs_collect_platform_view_overview_android.png" alt="VGSCollect Android Flutter view integration diagram">
 </p>
 
 <b>Implementing MethodChannel for communication between dart and native code:</b>
 
 <p align="center">
-    <img src="images/VGSCollect_method_channel_overview_Android.png" alt="VGSCollect Android Flutter method channel integration diagram">
+    <img src="images/vgs_collect_method_channel_overview_android.png" alt="VGSCollect Android Flutter method channel integration diagram">
 </p>
 
 1. Add dependencies into your `android/app/build.gradle`:
