@@ -5,9 +5,11 @@ target 'Runner' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
+  # Pods for Runner
   pod 'VGSCollectSDK'
   pod 'VGSShowSDK'
 
-  # Pods for Runner
+	# Add CardIO module to use Card.io as scan provider
+	pod 'VGSCollectSDK/CardIO' 
 
 end

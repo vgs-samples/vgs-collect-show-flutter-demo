@@ -27,18 +27,26 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 33
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
-    }
-
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.vgs.showcollect.flutter.vgs_show_collect_flutter_demo"
+        applicationId "com.verygoodsecurity.vgs_collect_flutter_demo"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 21
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
@@ -59,9 +67,10 @@ flutter {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:1.6.0-rc01"
-    implementation "com.google.android.material:material:1.6.1"
 
-    implementation 'com.verygoodsecurity:vgscollect:1.7.2'
+    implementation 'com.verygoodsecurity:vgscollect:1.7.3'
     implementation 'com.verygoodsecurity:vgsshow:1.2.0'
+    implementation 'com.verygoodsecurity:adapter-cardio:1.0.3'
+
+    implementation 'com.google.code.gson:gson:2.9.1'
 }
