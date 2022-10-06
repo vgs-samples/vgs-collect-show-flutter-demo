@@ -67,8 +67,8 @@ class CollectShowConstants {
 Click on "open a file", then navigate to the main.dart file and then click debug and run.
 
 <p align="center">
-	<img src="images/vgs_collect_flutter_demo_iOS.gif?raw=true" width="200" alt="VGS Collect iOS Flutter demo">
-	<img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Android Flutter demo">
+	<img src="images/vgs_collect_flutter_demo_iOS.gif?raw=true" width="200" alt="VGS Collect iOS Flutter demo" hspace="20">
+	<img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Android Flutter demo" hspace="20">
 </p>
 
 ## Run VGSShow use case
