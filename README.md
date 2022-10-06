@@ -8,7 +8,7 @@ We don't have official Flutter package. You can easily integrate VGS Collect SDK
 <!--ts-->
 
 - [Run application](#run-application)
-- [Run VGSShow use case](#run-application)
+- [Run VGSShow use case](#run-vgsshow-use-case)
 - [iOS VGSCollect integration guide](#ios-vgscollect-integration-guide)
 - [Android VGSCollect integration guide](#android-integration-guide)
 
