@@ -1,7 +1,7 @@
 # README
 
-This demo shows how to integrate VGS Collect [iOS](https://github.com/verygoodsecurity/vgs-collect-ios) and [Android](https://github.com/verygoodsecurity/vgs-collect-android) SDK to your Flutter app.
-We don't have official Flutter package. You can easily integrate VGS Collect SDK into your mobile crossplatform Flutter apps.
+This demo shows how to integrate VGS Collect [iOS](https://github.com/verygoodsecurity/vgs-collect-ios) and [Android](https://github.com/verygoodsecurity/vgs-collect-android) SDK into your Flutter app.
+VGS don't have official Flutter package. You can easily integrate VGS Collect SDK into your mobile crossplatform Flutter apps.
 
 # Table of contents
 
@@ -19,13 +19,11 @@ We don't have official Flutter package. You can easily integrate VGS Collect SDK
 
 1. Required environment:
 
-### Requirements
-
 - Installed <a href="https://flutter.dev/docs/get-started/install" target="_blank">Flutter</a>
 - Setup <a href="https://flutter.dev/docs/get-started/editor?tab=androidstudio" target="_blank">IDEA</a>
 - Setup <a href="https://flutter.dev/docs/get-started/install/macos#install-xcode" target="_blank">Xcode</a>
 - Install <a href="https://cocoapods.org/" target="_blank">Cocoapods</a> for running iOS
-- Create your Organization with <a href="https://www.verygoodsecurity.com/">VGS</a>
+- Organization at <a href="https://www.verygoodsecurity.com/">VGS</a>
 
 > **_NOTE:_** Please visit Flutter <a href="https://flutter.dev/docs" target="_blank">documentation</a>
 > for more detailed explanation how to setup Flutter and IDEA.</br>
@@ -83,13 +81,13 @@ Integration to Flutter project can be separated into two parts.
 <b>Implementing PlatformView wrappers for native iOS views:</b>
 
 <p align="center">
-	<img src="images/VGSCollect_platform_view_overview_iOS.png" alt="VGSCollect iOS Flutter view integration diagram">
+	<img src="images/VGSCollect_platform_view_overview_Android.png" alt="VGSCollect Android Flutter view integration diagram">
 </p>
 
 <b>Implementing MethodChannel for communication between dart and native code:</b>
 
 <p align="center">
-    <img src="images/VGSCollect_method_channel_overview_iOS.png" alt="VGSCollect iOS Flutter method channel integration diagram">
+    <img src="images/VGSCollect_method_channel_overview_Android.png" alt="VGSCollect Android Flutter method channel integration diagram">
 </p>
 
 1. Add dependencies into your `Podfile` in `ios` folder:
