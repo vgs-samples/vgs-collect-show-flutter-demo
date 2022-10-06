@@ -117,14 +117,14 @@ Make sure deployment minimal iOS version of your target and project is set to `i
    Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
    how to integrate native and Flutter code.
 
-3. Check our [implementation](https://github.com/vgs-samples/vgs-samples-collect-show-flutter-demo/tree/main/ios/Runner/UseCases/CollectShowData/).
+3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/feature/IOSSDK/update-demo/ios/Runner/UseCases/CustomCardData/CollectView).
 
-| File                                                   | Description                                                  |
-| ------------------------------------------------------ | ------------------------------------------------------------ |
-| com.example.vgs_collect_flutter_demo                   | Root package.                                                |
-| com.example.vgs_collect_flutter_demo.view              | All platform views and factories.                            |
-| com.example.vgs_collect_flutter_demo.view.collect      | Platform view and factory used in custom example.            |
-| com.example.vgs_collect_flutter_demo.view.collect_show | Platform views and factories used in collect & show example. |
+| File                                          | Description                                                                        |
+| --------------------------------------------- | ---------------------------------------------------------------------------------- |
+| CustomCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                 |
+| FlutterCustomCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. |
+| FlutterCustomCardDataCollectViewFactory.swift | Platform view factory.                                                             |
+| FlutterCustomCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                    |
 
 ## Android integration guide
 
