@@ -1,9 +1,9 @@
-package com.example.vgs_collect_flutter_demo.view.collect_show.show
+package com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.show
 
 import android.content.Context
 import android.util.Log
-import com.example.vgs_collect_flutter_demo.R
-import com.example.vgs_collect_flutter_demo.view.BasePlatformView
+import com.verygoodsecurity.vgs_collect_flutter_demo.R
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.verygoodsecurity.vgsshow.VGSShow
 import com.verygoodsecurity.vgsshow.core.listener.VGSOnResponseListener
 import com.verygoodsecurity.vgsshow.core.network.client.VGSHttpMethod

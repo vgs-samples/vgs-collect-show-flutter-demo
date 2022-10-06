@@ -1,10 +1,10 @@
-package com.example.vgs_collect_flutter_demo.view.collect_show.collect
+package com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.collect
 
 import android.content.Context
 import androidx.annotation.CallSuper
-import com.example.vgs_collect_flutter_demo.R
-import com.example.vgs_collect_flutter_demo.view.BasePlatformView
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.google.gson.Gson
+import com.verygoodsecurity.vgs_collect_flutter_demo.R
 import com.verygoodsecurity.vgscollect.core.HTTPMethod
 import com.verygoodsecurity.vgscollect.core.VGSCollect
 import com.verygoodsecurity.vgscollect.core.VgsCollectResponseListener

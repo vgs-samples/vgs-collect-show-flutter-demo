@@ -1,13 +1,13 @@
-package com.example.vgs_collect_flutter_demo
+package com.verygoodsecurity.vgs_collect_flutter_demo
 
 import android.content.Intent
-import com.example.vgs_collect_flutter_demo.view.collect.CardIO
-import com.example.vgs_collect_flutter_demo.view.collect.CollectCardView
-import com.example.vgs_collect_flutter_demo.view.collect.CollectCardViewFactory
-import com.example.vgs_collect_flutter_demo.view.collect_show.collect.CollectShowCardView
-import com.example.vgs_collect_flutter_demo.view.collect_show.collect.CollectShowCardViewFactory
-import com.example.vgs_collect_flutter_demo.view.collect_show.show.ShowCardView
-import com.example.vgs_collect_flutter_demo.view.collect_show.show.ShowCardViewFactory
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect.CardIO
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect.CollectCardView
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect.CollectCardViewFactory
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.collect.CollectShowCardView
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.collect.CollectShowCardViewFactory
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.show.ShowCardView
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.show.ShowCardViewFactory
 import com.verygoodsecurity.api.cardio.ScanActivity
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine

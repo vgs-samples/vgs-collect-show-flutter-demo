@@ -1,4 +1,4 @@
-package com.example.vgs_collect_flutter_demo.view.collect
+package com.verygoodsecurity.vgs_collect_flutter_demo.view.collect
 
 import android.content.Intent
 

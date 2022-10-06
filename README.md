@@ -11,9 +11,8 @@ We don't have official Flutter package. You can easily integrate VGS Collect SDK
 - [iOS VGSCollect integration guide](#ios-vgscollect-integration-guide)
 - [iOS CardIO integration guide](#ios-cardio-integration-guide)
 - [iOS VGSShow integration guide](#ios-vgsshow-integration-guide)
-- [Android VGSCollect integration guide](#android-vgscollect-integration-guide)
-- [Android CardIO integration guide](#android-cardio-integration-guide)
-- [Android VGSShow integration guide](#android-vgsshow-integration-guide)
+- [Android VGSCollect integration guide](#android-integration-guide)
+
 <!--te-->
 
 ## Run application
@@ -868,16 +867,44 @@ Future<dynamic> invokedMethods(MethodCall methodCall) async {
 
 ## iOS VGSShow integration guide
 
-Check [VGSShow use case](https://github.com/vss-samples/test-flutter-app/tree/main/lib/presentation/pages/collect_show) section for VGSShow integration guide.
+Check [VGSShow use case](https://github.com/EugeneIOs/test-flutter-app/tree/main/lib/presentation/pages/collect_show) section for VGSShow integration guide.
 
 ## Android integration guide
 
-TODO: add Android
+Integration to Flutter project can be separated into two parts.
 
-## Android CardIO integration guide
+<b>Implementing PlatformView wrappers for native Android views:</b>
 
-TODO: add Android
+<p align="center">
+	<img src="images/VGSCollect_platform_view_overview_Android.png" alt="VGSCollect Android Flutter view integration diagram">
+</p>
 
-## Android VGSShow integration guide
+<b>Implementing MethodChannel for communication between dart and native code:</b>
 
-TODO: add Android
+<p align="center">
+    <img src="images/VGSCollect_method_channel_overview_Android.png" alt="VGSCollect Android Flutter method channel integration diagram">
+</p>
+
+1. Add dependencies into your `android/app/build.gradle`:
+
+```groovy
+dependencies {
+
+    implementation 'com.verygoodsecurity:vgscollect:latest_version'
+    implementation 'com.verygoodsecurity:vgsshow:latest_version'
+    implementation 'com.verygoodsecurity:adapter-cardio:latest_version'
+}
+```
+
+2. Review official
+   Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
+   how to integrate native and Flutter code.
+
+3. Check our [implementation](https://github.com/EugeneIOs/test-flutter-app/tree/main/android/app/src/main/kotlin/com/example/vgs_collect_flutter_demo).
+
+| Package      | Description                                                  |
+|--------------|--------------------------------------------------------------|
+| com.example.vgs_collect_flutter_demo | Root package.                                                |
+| com.example.vgs_collect_flutter_demo.view | All platform views and factories.                            |
+| com.example.vgs_collect_flutter_demo.view.collect | Platform view and factory used in custom example.            |
+| com.example.vgs_collect_flutter_demo.view.collect_show | Platform views and factories used in collect & show example. |

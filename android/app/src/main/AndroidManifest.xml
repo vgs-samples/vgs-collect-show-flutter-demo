@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vgs_collect_flutter_demo">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.verygoodsecurity.vgs_collect_flutter_demo">
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -7,7 +8,7 @@
         android:theme="@style/NormalTheme">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.verygoodsecurity.vgs_collect_flutter_demo.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
             android:hardwareAccelerated="true"
@@ -31,5 +32,17 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.verygoodsecurity.vgs_collect_flutter_demo"
+            tools:replace="android:authorities"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.vgs_collect_flutter_demo.view
+package com.verygoodsecurity.vgs_collect_flutter_demo.view
 
 import android.content.Context
 import android.view.LayoutInflater
