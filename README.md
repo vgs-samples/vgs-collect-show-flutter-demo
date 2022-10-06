@@ -8,6 +8,7 @@ We don't have official Flutter package. You can easily integrate VGS Collect SDK
 <!--ts-->
 
 - [Run application](#run-application)
+- [Run VGSShow use case](#run-application)
 - [iOS VGSCollect integration guide](#ios-vgscollect-integration-guide)
 - [Android VGSCollect integration guide](#android-integration-guide)
 
@@ -70,6 +71,10 @@ Click on "open a file", then navigate to the main.dart file and then click debug
 	<img src="images/vgs-collect-flutter-demo-iOS.gif?raw=true" width="200" alt="VGS Collect iOS Flutter demo">
 </p>
 
+## Run VGSShow use case
+
+Check [VGSShow use case here](https://github.com/vgs-samples-collect-show-flutter-demo/tree/main/lib/presentation/pages/collect_show).
+
 ## iOS VGSCollect integration guide
 
 Integration to Flutter project can be separated into two parts.
@@ -89,25 +94,37 @@ Integration to Flutter project can be separated into two parts.
 1. Add dependencies into your `Podfile` in `ios` folder:
 
 ```ruby
+target 'Runner' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
 
+  # Pods for Runner
+
+  pod 'VGSCollectSDK'
+  pod 'VGSShowSDK'
+  pod 'VGSCollectSDK/CardIO'
+
+end
+```
+
+Make sure deployment minimal iOS version of your target and project is set to `iOS 10` or later in iOS [project settings](https://stackoverflow.com/a/61335546). Run:
+
+```bash
+  pod update
 ```
 
 2. Review official
    Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
    how to integrate native and Flutter code.
 
-3. Check our [implementation](https://github.com/EugeneIOs/test-flutter-app/tree/main/android/app/src/main/kotlin/com/example/vgs_collect_flutter_demo).
+3. Check our [implementation](https://github.com/vgs-samples/vgs-samples-collect-show-flutter-demo/tree/main/ios/Runner/UseCases/CollectShowData/).
 
-| Package                                                | Description                                                  |
+| File                                                   | Description                                                  |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
 | com.example.vgs_collect_flutter_demo                   | Root package.                                                |
 | com.example.vgs_collect_flutter_demo.view              | All platform views and factories.                            |
 | com.example.vgs_collect_flutter_demo.view.collect      | Platform view and factory used in custom example.            |
 | com.example.vgs_collect_flutter_demo.view.collect_show | Platform views and factories used in collect & show example. |
-
-## iOS VGSShow integration guide
-
-Check [VGSShow use case](https://github.com/EugeneIOs/test-flutter-app/tree/main/lib/presentation/pages/collect_show) section for VGSShow integration guide.
 
 ## Android integration guide
 
