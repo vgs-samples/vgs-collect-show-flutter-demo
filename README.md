@@ -72,7 +72,7 @@ Click on "open a file", then navigate to the main.dart file and then click debug
 
 ## Run VGSShow use case
 
-Check [VGSShow use case here](https://github.com/vgs-samples-collect-show-flutter-demo/tree/main/lib/presentation/pages/collect_show).
+Check [VGSShow use case here](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/collect_show).
 
 ## iOS VGSCollect integration guide
 
@@ -123,7 +123,7 @@ For `CardIO` include `NSCameraUsageDescription` key in iOS project `info.plist` 
    Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
    how to integrate native and Flutter code.
 
-3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/feature/IOSSDK/update-demo/ios/Runner/UseCases/CustomCardData/CollectView).
+3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/ios/Runner/UseCases/CustomCardData/CollectView).
 
 | File                                          | Description                                                                                                                          |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -163,7 +163,7 @@ dependencies {
    Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
    how to integrate native and Flutter code.
 
-3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/test-flutter-app/tree/main/android/app/src/main/kotlin/com/example/vgs_collect_flutter_demo).
+3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/android/app/src/main/kotlin/com/verygoodsecurity/vgs_collect_flutter_demo).
 
 | Package                                                | Description                                                  |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
@@ -217,7 +217,7 @@ For iOS and Android you need to create Fluttter wrappers depending on platform.
   }
 ```
 
-Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/test-flutter-app/tree/main/android/app/src/main/kotlin/com/example/vgs_collect_flutter_demo).
+Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/custom_card_data).
 
 | File                             | Description                                                    |
 | -------------------------------- | -------------------------------------------------------------- |
