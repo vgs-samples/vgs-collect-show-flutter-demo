@@ -1,6 +1,6 @@
 # README
 
-This demo shows how to integrate VGS Collect [iOS](https://github.com/verygoodsecurity/vgs-collect-ios) and [Android](https://github.com/verygoodsecurity/vgs-collect-android) SDK into your Flutter app.
+This demo shows how to integrate VGS Collect [iOS](https://github.com/verygoodsecurity/vgs-collect-ios) and [Android](https://github.com/verygoodsecurity/vgs-collect-android) SDK into your [Flutter](https://flutter.dev/) app.
 VGS don't have official Flutter package. You can easily integrate VGS Collect SDK into your mobile crossplatform Flutter apps.
 
 # Table of contents
