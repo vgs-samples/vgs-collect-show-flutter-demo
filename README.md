@@ -27,7 +27,7 @@ VGS don't have official Flutter package. You can easily integrate VGS Collect SD
 
 > **_NOTE:_** Please visit Flutter <a href="https://flutter.dev/docs" target="_blank">documentation</a>
 > for more detailed explanation how to setup Flutter and IDEA.</br>
-> This sample is compatitable with Flutter 3.2.0 version.</br>
+> This sample is compatitable with Flutter 3.3.4 version.</br>
 > Check Flutter issues <a href="https://github.com/flutter/flutter/issues" target="_blank">here.</a>
 
 2. Install Flutter packages
@@ -167,16 +167,16 @@ dependencies {
 
 3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/android/app/src/main/kotlin/com/verygoodsecurity/vgs_collect_flutter_demo).
 
-| Package                                                | Description                                                  |
-|--------------------------------------------------------| ------------------------------------------------------------ |
-| com.verygoodsecurity.vgs_collect_flutter_demo          | Root package.                                                |
+| Package                                                         | Description                                                  |
+| --------------------------------------------------------------- | ------------------------------------------------------------ |
+| com.verygoodsecurity.vgs_collect_flutter_demo                   | Root package.                                                |
 | com.verygoodsecurity.vgs_collect_flutter_demo.view              | All platform views and factories.                            |
 | com.verygoodsecurity.vgs_collect_flutter_demo.view.collect      | Platform view and factory used in custom example.            |
 | com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show | Platform views and factories used in collect & show example. |
 
 ## Flutter integration guide
 
-For iOS and Android you need to create Fluttter wrappers depending on platform.
+For iOS and Android you need to create Flutter wrappers depending on platform.
 
 ```dart
   Widget _cardCollectView() {

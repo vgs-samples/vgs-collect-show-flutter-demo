@@ -23,7 +23,7 @@ We don't have official Flutter package. You can easily integrate VGS Show SDK in
 
 > **_NOTE:_** Please visit Flutter <a href="https://flutter.dev/docs" target="_blank">documentation</a>
 > for more detailed explanation how to setup Flutter and IDEA.</br>
-> This sample is compatitable with Flutter 3.2.0 version.</br>
+> This sample is compatitable with Flutter 3.3.4 version.</br>
 > Check Flutter issues <a href="https://github.com/flutter/flutter/issues" target="_blank">here.</a>
 
 2. Setup routes.
