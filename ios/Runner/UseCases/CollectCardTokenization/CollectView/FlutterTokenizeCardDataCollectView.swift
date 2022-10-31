@@ -204,7 +204,7 @@ extension FlutterTokenizeCardDataCollectView: VGSCardIOScanControllerDelegate {
     switch type {
     case .cardNumber:
       return collectView.cardNumberField
-    case .expirationDateLong:
+    case .expirationDate:
       return collectView.expDateField
     case .cvc:
       return collectView.cvcTextField
