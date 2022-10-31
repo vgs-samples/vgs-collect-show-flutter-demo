@@ -70,6 +70,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
                                 text: 'Formis is valid. Tokenizing data...',
                               );
 
+                              await _collectController.hideKeyboard();
                               await sendData();
                             }
                           },
