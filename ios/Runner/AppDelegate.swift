@@ -9,6 +9,9 @@ import Flutter
   ) -> Bool {
 
     GeneratedPluginRegistrant.register(with: self)
+
+    FlutterTokenizeCardDataCollectViewPlugin.register(with: registrar(forPlugin: "FlutterTokenizeCardDataCollectPlugin")!)
+    
     FlutterCustomCardDataCollectViewPlugin.register(with: registrar(forPlugin: "FlutterCustomCardDataCollectPlugin")!)
 
     FlutterCardDataCollectViewPlugin.register(with: registrar(forPlugin: "FlutterCardDataCollectViewPlugin")!)

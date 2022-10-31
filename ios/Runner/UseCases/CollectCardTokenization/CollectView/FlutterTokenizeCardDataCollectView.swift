@@ -16,7 +16,7 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
   var vgsCollect: VGSCollect?
 
   /// Collect view.
-  let collectView: CustomCardDataCollectView
+  let collectView: TokenizeCardDataCollectView
 
   /// Flutter binary messenger.
   let messenger: FlutterBinaryMessenger
@@ -44,7 +44,7 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
        args: Any?) {
     self.messenger = messenger
     self.viewId = viewId
-    self.collectView = CustomCardDataCollectView()
+    self.collectView = TokenizeCardDataCollectView()
 
     // Create flutter method channel.
     self.channel = FlutterMethodChannel(name: "tokenize-card-collect-form-view/\(viewId)",
@@ -139,6 +139,8 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
           "STATUS": "SUCCESS",
           "DATA": response
         ]
+
+        print(response)
         result(payload)
 
         return

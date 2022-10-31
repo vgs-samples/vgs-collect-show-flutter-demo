@@ -2,7 +2,7 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vgs_collect_flutter_demo/presentation/pages/custom_card_data/custom_card_data_controller.dart';
+import 'package:vgs_collect_flutter_demo/presentation/pages/collect_tokenization/tokenize_card_data_controller.dart';
 import 'package:vgs_collect_flutter_demo/presentation/widgets/loader_widget.dart';
 import 'package:vgs_collect_flutter_demo/presentation/widgets/scrollable_text_widget.dart';
 import 'package:vgs_collect_flutter_demo/utils/constants.dart';
@@ -18,7 +18,7 @@ class CollectTokenizeCardPage extends StatefulWidget {
 }
 
 class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
-  late CustomCardDataController _collectController;
+  late TokenizeCardDataController _collectController;
 
   String _outputText = '';
   bool _isLoading = false;
@@ -83,28 +83,28 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
                         ),
                       ),
                     ),
-                    // Expanded(
-                    //   child: Container(
-                    //     margin: const EdgeInsets.symmetric(
-                    //       horizontal: 16,
-                    //       vertical: 8,
-                    //     ),
-                    //     height: 50,
-                    //     child: ElevatedButton.icon(
-                    //       onPressed: () async {
-                    //         await _collectController.presentCardIO();
-                    //       },
-                    //       icon: Icon(Icons.photo_camera),
-                    //       label: Text(
-                    //         'SCAN',
-                    //         style: TextStyle(
-                    //           fontSize: 18,
-                    //           fontWeight: FontWeight.bold,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
+                        height: 50,
+                        child: ElevatedButton.icon(
+                          onPressed: () async {
+                            await _collectController.presentCardIO();
+                          },
+                          icon: Icon(Icons.photo_camera),
+                          label: Text(
+                            'SCAN',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -141,7 +141,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
       SizedBox(
           height: 290.0,
           child: UiKitView(
-              viewType: customCardDataCollectViewType,
+              viewType: tokenizeCardDataCollectViewType,
               onPlatformViewCreated: _createCardCollectController,
               creationParams: creationParams,
               creationParamsCodec: StandardMessageCodec()))
@@ -155,7 +155,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
     return SizedBox(
       height: 300,
       child: AndroidView(
-        viewType: customCardDataCollectViewType,
+        viewType: tokenizeCardDataCollectViewType,
         onPlatformViewCreated: _createCardCollectController,
         layoutDirection: TextDirection.ltr,
         creationParams: creationParams,
@@ -165,7 +165,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
   }
 
   void _createCardCollectController(int id) {
-    _collectController = CustomCardDataController(id);
+    _collectController = TokenizeCardDataController(id);
     _collectController.channel.setMethodCallHandler(invokedMethods);
     _collectController.configureCollect();
     _collectController.showKeyboard();
@@ -211,17 +211,18 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
     setState(() {
       _isLoading = true;
     });
-    final result = await _collectController.sendData();
+    final result = await _collectController.tokenizeData();
     var resultData = new Map<String, dynamic>.from(result);
     final resultStatus = resultData[EventPayloadNames.status];
     if (resultStatus == EventPayloadNames.success) {
-      final data = resultData[EventPayloadNames.data] as Map<dynamic, dynamic>;
-      final json = new Map<String, dynamic>.from(data);
-      print('custom config json: ${json}');
+      final data = resultData[EventPayloadNames.data] as String;
+      // final data = resultData[EventPayloadNames.data] as Map<dynamic, dynamic>;
+      // final json = new Map<String, dynamic>.from(data);
+      // print('custom config json: ${json}');
 
       setState(() {
         _isLoading = false;
-        _outputText = prettyJson(json);
+        _outputText = data;
       });
       SnackBarUtils.showSnackBar(
         context,
