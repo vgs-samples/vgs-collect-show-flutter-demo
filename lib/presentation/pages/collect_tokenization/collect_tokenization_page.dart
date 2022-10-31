@@ -1,7 +1,7 @@
 import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:vgs_collect_flutter_demo/presentation/pages/collect_tokenization/tokenize_card_data_controller.dart';
 import 'package:vgs_collect_flutter_demo/presentation/widgets/loader_widget.dart';
 import 'package:vgs_collect_flutter_demo/presentation/widgets/scrollable_text_widget.dart';
@@ -67,7 +67,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
                             } else {
                               SnackBarUtils.showSnackBar(
                                 context,
-                                text: 'Formis is valid. Send data...',
+                                text: 'Formis is valid. Tokenizing data...',
                               );
 
                               await sendData();
@@ -83,6 +83,11 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
                         ),
                       ),
                     ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.symmetric(
@@ -96,7 +101,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
                           },
                           icon: Icon(Icons.photo_camera),
                           label: Text(
-                            'SCAN',
+                            'card.io',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -135,7 +140,6 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
   }
 
   Widget _cardCollectNativeiOS() {
-    print('_cardCollectNativeiOS');
     final Map<String, dynamic> creationParams = <String, dynamic>{};
     return Column(children: [
       SizedBox(
@@ -215,18 +219,19 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
     var resultData = new Map<String, dynamic>.from(result);
     final resultStatus = resultData[EventPayloadNames.status];
     if (resultStatus == EventPayloadNames.success) {
-      final data = resultData[EventPayloadNames.data] as String;
-      // final data = resultData[EventPayloadNames.data] as Map<dynamic, dynamic>;
-      // final json = new Map<String, dynamic>.from(data);
-      // print('custom config json: ${json}');
+      //final data = resultData[EventPayloadNames.data] as String;
+      final data = resultData[EventPayloadNames.data] as Map<dynamic, dynamic>;
+      final json = new Map<String, dynamic>.from(data);
+      print('tokenization config json: ${json}');
 
       setState(() {
         _isLoading = false;
-        _outputText = data;
+        _outputText = prettyJson(json);
+        ;
       });
       SnackBarUtils.showSnackBar(
         context,
-        text: 'SUCCESS!',
+        text: 'TOKENIZATION SUCCESS!',
         color: Colors.lightGreen,
       );
     } else if (resultStatus == EventPayloadNames.failed) {

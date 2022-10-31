@@ -133,14 +133,12 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
     vgsCollect?.tokenizeData { [weak self](response) in
       switch response {
       case .success(_, let resultBody, _):
-        let response = (String(data: try! JSONSerialization.data(withJSONObject: resultBody!, options: .prettyPrinted), encoding: .utf8)!)
 
         let payload: [String: Any] = [
           "STATUS": "SUCCESS",
-          "DATA": response
+          "DATA": resultBody
         ]
 
-        print(response)
         result(payload)
 
         return
