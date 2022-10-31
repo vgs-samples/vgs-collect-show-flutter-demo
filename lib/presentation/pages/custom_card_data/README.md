@@ -8,7 +8,6 @@ VGS don't have official Flutter package. You can easily integrate VGS Collect SD
 <!--ts-->
 
 - [Run application](#run-application)
-- [Run VGSShow use case](#run-vgsshow-use-case)
 - [iOS VGSCollect integration guide](#ios-vgscollect-integration-guide)
 - [Android VGSCollect integration guide](#android-integration-guide)
 - [Flutter integration guide](#flutter-integration-guide)
@@ -71,10 +70,6 @@ Click on "open a file", then navigate to the main.dart file and then click debug
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
    <img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Android Flutter demo" hspace="20">
 </p>
-
-## Run VGSShow use case
-
-Check [VGSShow use case here](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/collect_show).
 
 ## iOS VGSCollect integration guide
 
