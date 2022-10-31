@@ -75,7 +75,7 @@ Click on "open a file", then navigate to the main.dart file and then click debug
 
 ## Run VGSCollect custom routes use case
 
-Check [VGSCollect custom routes use case here](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/collect_show).
+Check [VGSCollect custom routes use case here](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/custom_card_data).
 
 ## Run VGSShow use case
 
