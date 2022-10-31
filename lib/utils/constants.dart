@@ -1,4 +1,5 @@
 class RouteNames {
+  static const String tokenizeCardData = 'collect_tokenize_card_data';
   static const String customCardData = 'collect_custom_card_data';
   static const String collectShowCardData = 'collect_show_custom_card_data';
 }
