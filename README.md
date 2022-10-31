@@ -68,9 +68,9 @@ class CollectShowConstants {
 Click on "open a file", then navigate to the main.dart file and then click debug and run.
 
 <p align="center">
-   <img src="images/CollectCardTokenization_iOS_demo.gif?raw=true" width="200" alt="VGS Collect iOS Flutter demo" hspace="20">
+   <img src="images/CollectCardTokenization_iOS_demo.gif?raw=true" width="200" alt="VGS Collect Tokenization iOS Flutter demo" hspace="20">
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-   <img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Android Flutter demo" hspace="20">
+   <img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Tokenization Android Flutter demo" hspace="20">
 </p>
 
 ## Run VGSCollect custom routes use case
