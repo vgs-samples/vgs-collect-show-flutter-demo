@@ -20,6 +20,8 @@
 		443E11A228D9FA830048F2B5 /* FlutterShowViewPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E11A128D9FA830048F2B5 /* FlutterShowViewPlugin.swift */; };
 		4468CB8A290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468CB89290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift */; };
 		4468CB8C290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468CB8B290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift */; };
+		4468CB8E290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468CB8D290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift */; };
+		4468CB90290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468CB8F290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift */; };
 		44D6EA3528C384EA00547183 /* CustomCardDataCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D6EA3428C384EA00547183 /* CustomCardDataCollectView.swift */; };
 		44D6EA3728C3854500547183 /* FlutterCustomCardDataCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D6EA3628C3854500547183 /* FlutterCustomCardDataCollectView.swift */; };
 		44D6EA3928C385E000547183 /* FlutterCustomCardDataCollectViewPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D6EA3828C385E000547183 /* FlutterCustomCardDataCollectViewPlugin.swift */; };
@@ -60,6 +62,8 @@
 		443E11A128D9FA830048F2B5 /* FlutterShowViewPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterShowViewPlugin.swift; sourceTree = "<group>"; };
 		4468CB89290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizeCardDataCollectView.swift; sourceTree = "<group>"; };
 		4468CB8B290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterTokenizeCardDataCollectView.swift; sourceTree = "<group>"; };
+		4468CB8D290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterTokenizeCardDataCollectViewFactory.swift; sourceTree = "<group>"; };
+		4468CB8F290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterTokenizeCardDataCollectViewPlugin.swift; sourceTree = "<group>"; };
 		44D6EA3428C384EA00547183 /* CustomCardDataCollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardDataCollectView.swift; sourceTree = "<group>"; };
 		44D6EA3628C3854500547183 /* FlutterCustomCardDataCollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterCustomCardDataCollectView.swift; sourceTree = "<group>"; };
 		44D6EA3828C385E000547183 /* FlutterCustomCardDataCollectViewPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterCustomCardDataCollectViewPlugin.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 			children = (
 				4468CB89290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift */,
 				4468CB8B290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift */,
+				4468CB8D290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift */,
+				4468CB8F290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift */,
 			);
 			path = CollectView;
 			sourceTree = "<group>";
@@ -414,6 +420,8 @@
 				44D6EA3728C3854500547183 /* FlutterCustomCardDataCollectView.swift in Sources */,
 				44D6EA3528C384EA00547183 /* CustomCardDataCollectView.swift in Sources */,
 				443E11A228D9FA830048F2B5 /* FlutterShowViewPlugin.swift in Sources */,
+				4468CB8E290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift in Sources */,
+				4468CB90290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift in Sources */,
 				443E119E28D9F50F0048F2B5 /* FlutterShowCardView.swift in Sources */,
 				4468CB8C290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift in Sources */,
 				44D6EA3B28C3860D00547183 /* FlutterCustomCardDataCollectViewFactory.swift in Sources */,
