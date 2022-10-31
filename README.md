@@ -130,14 +130,14 @@ For `CardIO` include `NSCameraUsageDescription` key in iOS project `info.plist` 
    Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
    how to integrate native and Flutter code.
 
-3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/ios/Runner/UseCases/CustomCardData/CollectView).
+3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/ios/Runner/UseCases/CollectCardTokenization/CollectView).
 
-| File                                          | Description                                                                                                                          |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| CustomCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                                                                   |
-| FlutterCustomCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. Encapsulates FlutterMethodChannel implementation. |
-| FlutterCustomCardDataCollectViewFactory.swift | Platform view factory.                                                                                                               |
-| FlutterCustomCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                                                                      |
+| File                                            | Description                                                                                                                          |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| TokenizeCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                                                                   |
+| FlutterTokenizeCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. Encapsulates FlutterMethodChannel implementation. |
+| FlutterTokenizeCardDataCollectViewFactory.swift | Platform view factory.                                                                                                               |
+| FlutterTokenizeCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                                                                      |
 
 ## Android integration guide
 
