@@ -9,6 +9,7 @@ class MethodNames {
   static const String configureShow = 'configureShow';
   static const String redactCard = 'redactCard';
   static const String revealCard = 'revealCard';
+  static const String tokenizeCard = 'tokenizeCard';
   static const String copyCard = 'copyCard';
   static const String isFormValid = 'isFormValid';
   static const String presentCardIO = 'presentCardIO';
