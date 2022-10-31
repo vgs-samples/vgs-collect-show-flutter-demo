@@ -184,7 +184,7 @@ dependencies {
 For iOS and Android you need to create Flutter wrappers depending on platform.
 
 ```dart
-  Widget _cardCollectView() {
+Widget _cardCollectView() {
     if (Platform.isAndroid) {
       return _cardCollectNativeAndroid();
     } else if (Platform.isIOS) {
@@ -192,36 +192,36 @@ For iOS and Android you need to create Flutter wrappers depending on platform.
     } else {
       throw Exception('Platform is not supported!');
     }
-  }
+}
 
-  Widget _cardCollectNativeiOS() {
+Widget _cardCollectNativeiOS() {
     final Map<String, dynamic> creationParams = <String, dynamic>{};
     return Column(children: [
       SizedBox(
           height: 290.0,
           child: UiKitView(
-              viewType: customCardDataCollectViewType,
-              onPlatformViewCreated: _createCardCollectController,
+              viewType: tokenizeCardDataCollectViewType,
+              onPlatformViewCreated: _createTokenizationCardCollectController,
               creationParams: creationParams,
               creationParamsCodec: StandardMessageCodec()))
     ]);
-  }
+}
 
-  Widget _cardCollectNativeAndroid() {
+Widget _cardCollectNativeAndroid() {
     // Pass parameters to the platform side.
     final Map<String, dynamic> creationParams = <String, dynamic>{};
 
     return SizedBox(
       height: 300,
       child: AndroidView(
-        viewType: customCardDataCollectViewType,
-        onPlatformViewCreated: _createCardCollectController,
+        viewType: tokenizeCardDataCollectViewType,
+        onPlatformViewCreated: _createTokenizationCardCollectController,
         layoutDirection: TextDirection.ltr,
         creationParams: creationParams,
         creationParamsCodec: const StandardMessageCodec(),
       ),
     );
-  }
+}
 ```
 
 Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/custom_card_data).
