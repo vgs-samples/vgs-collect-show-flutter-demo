@@ -226,7 +226,7 @@ Widget _cardCollectNativeAndroid() {
 
 Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/collect_tokenization).
 
-| File                                | Description                                                    |
-| ----------------------------------- | -------------------------------------------------------------- |
-| tokenize_card_data_controller.dart  | Holds Flutter method channel and method invocation logic.      |
-| collect_tokenization_card_data.dart | Holds Flutter platform views with collect card data page demo. |
+| File                                | Description                                                                 |
+| ----------------------------------- | --------------------------------------------------------------------------- |
+| tokenize_card_data_controller.dart  | Holds Flutter method channel and method invocation logic.                   |
+| collect_tokenization_card_data.dart | Holds Flutter platform views with collect card data tokenization page demo. |
