@@ -8,7 +8,7 @@ VGS don't have official Flutter package. You can easily integrate VGS Collect SD
 <!--ts-->
 
 - [Run application](#run-application)
-- [Run VGSCollect custom routes use case](#run-vgscollect-custom-routes-use-case)
+- [Run VGSCollect tokenization use case](#run-vgscollect-tokenization-use-case)
 - [Run VGSShow use case](#run-vgsshow-use-case)
 - [iOS VGSCollect integration guide](#ios-vgscollect-integration-guide)
 - [Android VGSCollect integration guide](#android-integration-guide)
@@ -68,14 +68,14 @@ class CollectShowConstants {
 Click on "open a file", then navigate to the main.dart file and then click debug and run.
 
 <p align="center">
-   <img src="images/CollectCardTokenization_iOS_demo.gif?raw=true" width="200" alt="VGS Collect Tokenization iOS Flutter demo" hspace="20">
+   <img src="images/vgs_collect_flutter_demo_iOS.gif?raw=true" width="200" alt="VGS Collect iOS Flutter demo" hspace="20">
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-   <img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Tokenization Android Flutter demo" hspace="20">
+   <img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Android Flutter demo" hspace="20">
 </p>
 
-## Run VGSCollect custom routes use case
+## Run VGSCollect tokenization use case
 
-Check [VGSCollect custom routes use case here](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/custom_card_data).
+Check [VGSCollect tokenization use case here](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/collect_tokenization).
 
 ## Run VGSShow use case
 
@@ -130,14 +130,14 @@ For `CardIO` include `NSCameraUsageDescription` key in iOS project `info.plist` 
    Flutter [documentation](https://docs.flutter.dev/development/platform-integration/platform-channels)
    how to integrate native and Flutter code.
 
-3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/ios/Runner/UseCases/CollectCardTokenization/CollectView).
+3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/ios/Runner/UseCases/CustomCardData/CollectView).
 
-| File                                            | Description                                                                                                                          |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| TokenizeCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                                                                   |
-| FlutterTokenizeCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. Encapsulates FlutterMethodChannel implementation. |
-| FlutterTokenizeCardDataCollectViewFactory.swift | Platform view factory.                                                                                                               |
-| FlutterTokenizeCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                                                                      |
+| File                                          | Description                                                                                                                          |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| CustomCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                                                                   |
+| FlutterCustomCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. Encapsulates FlutterMethodChannel implementation. |
+| FlutterCustomCardDataCollectViewFactory.swift | Platform view factory.                                                                                                               |
+| FlutterCustomCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                                                                      |
 
 ## Android integration guide
 
@@ -184,7 +184,7 @@ dependencies {
 For iOS and Android you need to create Flutter wrappers depending on platform.
 
 ```dart
-Widget _cardCollectView() {
+  Widget _cardCollectView() {
     if (Platform.isAndroid) {
       return _cardCollectNativeAndroid();
     } else if (Platform.isIOS) {
@@ -192,41 +192,41 @@ Widget _cardCollectView() {
     } else {
       throw Exception('Platform is not supported!');
     }
-}
+  }
 
-Widget _cardCollectNativeiOS() {
+  Widget _cardCollectNativeiOS() {
     final Map<String, dynamic> creationParams = <String, dynamic>{};
     return Column(children: [
       SizedBox(
           height: 290.0,
           child: UiKitView(
-              viewType: tokenizeCardDataCollectViewType,
-              onPlatformViewCreated: _createTokenizationCardCollectController,
+              viewType: customCardDataCollectViewType,
+              onPlatformViewCreated: _createCardCollectController,
               creationParams: creationParams,
               creationParamsCodec: StandardMessageCodec()))
     ]);
-}
+  }
 
-Widget _cardCollectNativeAndroid() {
+  Widget _cardCollectNativeAndroid() {
     // Pass parameters to the platform side.
     final Map<String, dynamic> creationParams = <String, dynamic>{};
 
     return SizedBox(
       height: 300,
       child: AndroidView(
-        viewType: tokenizeCardDataCollectViewType,
-        onPlatformViewCreated: _createTokenizationCardCollectController,
+        viewType: customCardDataCollectViewType,
+        onPlatformViewCreated: _createCardCollectController,
         layoutDirection: TextDirection.ltr,
         creationParams: creationParams,
         creationParamsCodec: const StandardMessageCodec(),
       ),
     );
-}
+  }
 ```
 
-Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/collect_tokenization).
+Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/custom_card_data).
 
-| File                                | Description                                                                 |
-| ----------------------------------- | --------------------------------------------------------------------------- |
-| tokenize_card_data_controller.dart  | Holds Flutter method channel and method invocation logic.                   |
-| collect_tokenization_card_data.dart | Holds Flutter platform views with collect card data tokenization page demo. |
+| File                             | Description                                                    |
+| -------------------------------- | -------------------------------------------------------------- |
+| custom_card_data_controller.dart | Holds Flutter method channel and method invocation logic.      |
+| custom_card_data.dart            | Holds Flutter platform views with collect card data page demo. |

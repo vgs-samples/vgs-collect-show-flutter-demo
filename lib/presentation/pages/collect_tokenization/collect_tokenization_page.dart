@@ -147,7 +147,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
           height: 290.0,
           child: UiKitView(
               viewType: tokenizeCardDataCollectViewType,
-              onPlatformViewCreated: _createCardCollectController,
+              onPlatformViewCreated: _createTokenizationCardCollectController,
               creationParams: creationParams,
               creationParamsCodec: StandardMessageCodec()))
     ]);
@@ -161,7 +161,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
       height: 300,
       child: AndroidView(
         viewType: tokenizeCardDataCollectViewType,
-        onPlatformViewCreated: _createCardCollectController,
+        onPlatformViewCreated: _createTokenizationCardCollectController,
         layoutDirection: TextDirection.ltr,
         creationParams: creationParams,
         creationParamsCodec: const StandardMessageCodec(),
@@ -169,7 +169,7 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
     );
   }
 
-  void _createCardCollectController(int id) {
+  void _createTokenizationCardCollectController(int id) {
     _collectController = TokenizeCardDataController(id);
     _collectController.channel.setMethodCallHandler(invokedMethods);
     _collectController.configureCollect();
