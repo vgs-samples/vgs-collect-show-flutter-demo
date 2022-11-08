@@ -20,8 +20,10 @@ class CustomCardDataController {
     return await channel.invokeMethod(MethodNames.isFormValid);
   }
 
-  Future<void> presentCardIO() async {
-    return await channel.invokeMethod(MethodNames.presentCardIO);
+  Future<Map<dynamic, dynamic>> presentMicroBlink() async {
+    return await channel.invokeMethod(MethodNames.presentMicroBlink, {
+      'licenceKey': CollectShowConstants.microBlinkLicenceKey,
+    });
   }
 
   Future<void> showKeyboard() async {
