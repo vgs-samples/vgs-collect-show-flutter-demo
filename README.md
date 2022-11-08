@@ -109,6 +109,7 @@ target 'Runner' do
   pod 'VGSCollectSDK'
   pod 'VGSShowSDK'
   pod 'VGSCollectSDK/CardIO'
+  pod 'VGSCollectSDK/BlinkCard'
 
 end
 ```
@@ -119,11 +120,20 @@ Make sure deployment minimal iOS version of your target and project is set to `i
   pod update
 ```
 
-For `CardIO` include `NSCameraUsageDescription` key in iOS project `info.plist` to enable Camera in your iOS application.
+For `CardIO` and `BlinkCard` include `NSCameraUsageDescription`key in iOS project`info.plist` to enable Camera in your iOS application.
 
 ```xml
     <key>NSCameraUsageDescription</key>
     <string>Camera usage description</string>
+```
+
+For `BlinkCard` add your licence keys for `iOS` and `Android` to `constants.dart` file.
+
+```dart
+class CollectShowConstants {
+  static const microBlinkiOSLicenceKey = 'ios_licence_key';
+  static const microBlinkAndroidLicenceKey = 'android_licence_key';
+}
 ```
 
 2. Review official

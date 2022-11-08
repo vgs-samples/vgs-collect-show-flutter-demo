@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/services.dart';
 import 'package:vgs_collect_flutter_demo/utils/constants.dart';
 
@@ -21,8 +23,14 @@ class CustomCardDataController {
   }
 
   Future<Map<dynamic, dynamic>> presentMicroBlink() async {
+    var licenceKey = '';
+    if (Platform.isIOS) {
+      licenceKey = CollectShowConstants.microBlinkiOSLicenceKey;
+    } else if (Platform.isAndroid) {
+      licenceKey = CollectShowConstants.microBlinkAndroidLicenceKey;
+    }
     return await channel.invokeMethod(MethodNames.presentMicroBlink, {
-      'licenceKey': CollectShowConstants.microBlinkLicenceKey,
+      'licenceKey': licenceKey,
     });
   }
 
