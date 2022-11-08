@@ -38,6 +38,7 @@ class CollectShowConstants {
   static const microBlinkAndroidLicenceKey = 'android_licence_key';
 
   static bool hasMicroBlinkLicenceKey() {
-    return microBlinkiOSLicenceKey != '' && microBlinkAndroidLicenceKey != '';
+    return microBlinkiOSLicenceKey != 'ios_licence_key' &&
+        microBlinkAndroidLicenceKey != 'android_licence_key';
   }
 }
