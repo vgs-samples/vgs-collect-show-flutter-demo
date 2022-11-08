@@ -1,7 +1,11 @@
 PODS:
   - CardIOSDK (5.5.7)
+  - MBBlinkCard (2.6.0)
   - VGSCollectSDK (1.11.2):
     - VGSCollectSDK/Core (= 1.11.2)
+  - VGSCollectSDK/BlinkCard (1.11.2):
+    - MBBlinkCard (= 2.6.0)
+    - VGSCollectSDK/Core
   - VGSCollectSDK/CardIO (1.11.2):
     - CardIOSDK (= 5.5.7)
     - VGSCollectSDK/Core
@@ -11,21 +15,33 @@ PODS:
   - VGSShowSDK/Core (1.1.4)
 
 DEPENDENCIES:
-  - VGSCollectSDK
-  - VGSCollectSDK/CardIO
+  - "VGSCollectSDK (from `git@github.com:verygoodsecurity/vgs-collect-ios.git`, branch `feature/iOSSDK-464/card_scanner`)"
+  - "VGSCollectSDK/BlinkCard (from `git@github.com:verygoodsecurity/vgs-collect-ios.git`, branch `feature/iOSSDK-464/card_scanner`)"
+  - "VGSCollectSDK/CardIO (from `git@github.com:verygoodsecurity/vgs-collect-ios.git`, branch `feature/iOSSDK-464/card_scanner`)"
   - VGSShowSDK
 
 SPEC REPOS:
   trunk:
     - CardIOSDK
-    - VGSCollectSDK
+    - MBBlinkCard
     - VGSShowSDK
+
+EXTERNAL SOURCES:
+  VGSCollectSDK:
+    :branch: feature/iOSSDK-464/card_scanner
+    :git: "git@github.com:verygoodsecurity/vgs-collect-ios.git"
+
+CHECKOUT OPTIONS:
+  VGSCollectSDK:
+    :commit: b8be5b292efc7a1dd31058a6dceb3677ce070319
+    :git: "git@github.com:verygoodsecurity/vgs-collect-ios.git"
 
 SPEC CHECKSUMS:
   CardIOSDK: 56bb14c8c0af19f1c3e1ef36215b6801b68df34c
-  VGSCollectSDK: 2eee091d202f975b54e4984b59f69ae58ca8e1d7
+  MBBlinkCard: 527d304aeccfad06c3d53963106293cca27ea8d6
+  VGSCollectSDK: 78fc3f8ceed2e87fa0baa50478d97feec93da89f
   VGSShowSDK: 994bfab4f0774a7ccc7fcf55530f09b8ddd6b6d5
 
-PODFILE CHECKSUM: 150707544cfc1e2d506e241b6020b8afb8a6b2b6
+PODFILE CHECKSUM: 37a282edd4a77c2c985eaf18ad2b8252764ffc52
 
 COCOAPODS: 1.11.3

@@ -6,10 +6,12 @@ target 'Runner' do
   use_frameworks!
 
   # Pods for Runner
-  pod 'VGSCollectSDK'
+  pod 'VGSCollectSDK', :git => 'git@github.com:verygoodsecurity/vgs-collect-ios.git', :branch => 'feature/iOSSDK-464/card_scanner'
+  pod 'VGSCollectSDK/BlinkCard', :git => 'git@github.com:verygoodsecurity/vgs-collect-ios.git', :branch => 'feature/iOSSDK-464/card_scanner'
+  pod 'VGSCollectSDK/CardIO', :git => 'git@github.com:verygoodsecurity/vgs-collect-ios.git', :branch => 'feature/iOSSDK-464/card_scanner'
   pod 'VGSShowSDK'
 
-	# Add CardIO module to use Card.io as scan provider
-	pod 'VGSCollectSDK/CardIO' 
+  # Add CardIO module to use Card.io as scan provider
+  # pod 'VGSCollectSDK/CardIO' 
 
 end
