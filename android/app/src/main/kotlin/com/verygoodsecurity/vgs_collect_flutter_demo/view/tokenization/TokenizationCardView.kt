@@ -1,12 +1,11 @@
-package com.verygoodsecurity.vgs_collect_flutter_demo.view.collect
+package com.verygoodsecurity.vgs_collect_flutter_demo.view.tokenization
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.CallSuper
-import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
-import com.google.gson.Gson
 import com.verygoodsecurity.vgs_collect_flutter_demo.R
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.CardIO
-import com.verygoodsecurity.vgscollect.core.HTTPMethod
 import com.verygoodsecurity.vgscollect.core.VGSCollect
 import com.verygoodsecurity.vgscollect.core.VgsCollectResponseListener
 import com.verygoodsecurity.vgscollect.core.model.network.VGSResponse
@@ -19,7 +18,7 @@ import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-class CollectCardView constructor(
+class TokenizationCardView constructor(
     private val cardIO: CardIO, context: Context, messenger: BinaryMessenger, id: Int
 ) : BasePlatformView(VIEW_TYPE, context, messenger, id, R.layout.collect_form_layout),
     VgsCollectResponseListener {
@@ -34,26 +33,22 @@ class CollectCardView constructor(
 
     @CallSuper
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+        Log.d("Test", call.method)
         when (call.method) {
             "configureCollect" -> configureCollect(call.arguments as? Map<*, *>)
-            "showKeyboard" -> requestFocusAndShowKeyboard(vgsEtPersonName)
-            "hideKeyboard" -> vgsEtPersonName.hideKeyboard()
             "isFormValid" -> isFormValid(result)
             "presentCardIO" -> presentCardIO()
-            "redactCard" -> redactCard(result)
+            "showKeyboard" -> requestFocusAndShowKeyboard(vgsEtPersonName)
+            "hideKeyboard" -> {
+                vgsEtPersonName.hideKeyboard()
+                result.success(null)
+            }
+            "tokenizeCard" -> tokenize()
         }
     }
 
     override fun onResponse(response: VGSResponse?) {
-        val resultData = mutableMapOf<String, Any>()
-        if (response is VGSResponse.SuccessResponse) {
-            resultData["STATUS"] = "SUCCESS"
-            resultData["DATA"] = Gson().fromJson(response.body, HashMap::class.java)
-        } else {
-            resultData["STATUS"] = "FAILED"
-        }
-        result?.success(resultData)
-        result = null
+        Log.d("Test", response.toString())
     }
 
     private fun configureCollect(arguments: Map<*, *>?) {
@@ -87,9 +82,8 @@ class CollectCardView constructor(
         }
     }
 
-    private fun redactCard(result: MethodChannel.Result) {
-        this.result = result
-        collect?.asyncSubmit("/post", HTTPMethod.POST)
+    private fun tokenize() {
+        collect?.tokenize()
     }
 
     override fun dispose() {
@@ -111,6 +105,6 @@ class CollectCardView constructor(
 
     companion object {
 
-        const val VIEW_TYPE = "card-collect-form-view"
+        const val VIEW_TYPE = "tokenize-card-collect-form-view"
     }
 }
