@@ -163,11 +163,12 @@ dependencies {
 3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/android/app/src/main/kotlin/com/verygoodsecurity/vgs_collect_flutter_demo).
 
 | Package                                                         | Description                                                  |
-| --------------------------------------------------------------- | ------------------------------------------------------------ |
+|-----------------------------------------------------------------|--------------------------------------------------------------|
 | com.verygoodsecurity.vgs_collect_flutter_demo                   | Root package.                                                |
 | com.verygoodsecurity.vgs_collect_flutter_demo.view              | All platform views and factories.                            |
 | com.verygoodsecurity.vgs_collect_flutter_demo.view.collect      | Platform view and factory used in custom example.            |
 | com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show | Platform views and factories used in collect & show example. |
+| com.verygoodsecurity.vgs_collect_flutter_demo.view.tokenization | Platform views and factories used in tokenization example.   |
 
 ## Flutter integration guide
 
