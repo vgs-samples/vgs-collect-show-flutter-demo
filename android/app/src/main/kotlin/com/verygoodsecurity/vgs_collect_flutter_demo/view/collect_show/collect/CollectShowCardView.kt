@@ -5,10 +5,13 @@ import androidx.annotation.CallSuper
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.google.gson.Gson
 import com.verygoodsecurity.vgs_collect_flutter_demo.R
+import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.toFormattedJson
 import com.verygoodsecurity.vgscollect.core.HTTPMethod
 import com.verygoodsecurity.vgscollect.core.VGSCollect
 import com.verygoodsecurity.vgscollect.core.VgsCollectResponseListener
 import com.verygoodsecurity.vgscollect.core.model.network.VGSResponse
+import com.verygoodsecurity.vgscollect.core.model.state.FieldState
+import com.verygoodsecurity.vgscollect.core.storage.OnFieldStateChangeListener
 import com.verygoodsecurity.vgscollect.view.InputFieldView
 import com.verygoodsecurity.vgscollect.widget.ExpirationDateEditText
 import com.verygoodsecurity.vgscollect.widget.PersonNameEditText
@@ -60,6 +63,13 @@ class CollectShowCardView constructor(
         )
         collect?.addOnResponseListeners(this)
         collect?.bindView(vgsEtPersonName, vgsEtCardNumber, vgsEtExpiry)
+        collect?.addOnFieldStateChangeListener(object : OnFieldStateChangeListener {
+
+            override fun onStateChange(state: FieldState) {
+                val states = Gson().toJson(collect?.getAllStates()).toFormattedJson()
+                methodChannel.invokeMethod("stateDidChange", mapOf("STATE_DESCRIPTION" to states))
+            }
+        })
     }
 
     private fun isFormValid(result: MethodChannel.Result) {
