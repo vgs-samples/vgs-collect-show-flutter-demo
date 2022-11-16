@@ -22,17 +22,6 @@ class CollectUseCasesList extends StatelessWidget {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, RouteNames.tokenizeCardData);
-                },
-                child: CollectUseCaseItem(
-                  title: 'Tokenize Card Data',
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              GestureDetector(
-                onTap: () {
                   Navigator.pushNamed(context, RouteNames.customCardData);
                 },
                 child: CollectUseCaseItem(
@@ -48,6 +37,17 @@ class CollectUseCasesList extends StatelessWidget {
                 },
                 child: CollectUseCaseItem(
                   title: 'Reveal card data with VGSShow',
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.tokenizeCardData);
+                },
+                child: CollectUseCaseItem(
+                  title: 'Tokenize Card Data',
                 ),
               ),
               SizedBox(
