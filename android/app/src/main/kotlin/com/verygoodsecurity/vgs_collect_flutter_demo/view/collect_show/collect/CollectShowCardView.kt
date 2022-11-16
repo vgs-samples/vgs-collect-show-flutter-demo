@@ -5,6 +5,7 @@ import androidx.annotation.CallSuper
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.google.gson.Gson
 import com.verygoodsecurity.vgs_collect_flutter_demo.R
+import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.fromJson
 import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.toFormattedJson
 import com.verygoodsecurity.vgscollect.core.HTTPMethod
 import com.verygoodsecurity.vgscollect.core.VGSCollect
@@ -47,7 +48,7 @@ class CollectShowCardView constructor(
         val resultData = mutableMapOf<String, Any>()
         if (response is VGSResponse.SuccessResponse) {
             resultData["STATUS"] = "SUCCESS"
-            resultData["DATA"] = Gson().fromJson(response.body, HashMap::class.java)
+            resultData["DATA"] = response.body?.fromJson<HashMap<String, Any>>() ?: ""
         } else {
             resultData["STATUS"] = "FAILED"
         }
