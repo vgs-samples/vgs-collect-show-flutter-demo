@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 class RouteNames {
   static const String tokenizeCardData = 'collect_tokenize_card_data';
   static const String customCardData = 'collect_custom_card_data';
@@ -38,7 +40,12 @@ class CollectShowConstants {
   static const microBlinkAndroidLicenceKey = 'android_licence_key';
 
   static bool hasMicroBlinkLicenceKey() {
-    return microBlinkiOSLicenceKey != 'ios_licence_key' &&
-        microBlinkAndroidLicenceKey != 'android_licence_key';
+    if (Platform.isIOS) {
+      return microBlinkiOSLicenceKey != 'ios_licence_key';
+    } else if (Platform.isAndroid) {
+      return microBlinkAndroidLicenceKey != 'android_licence_key';
+    } else {
+      throw Exception('Platform is not supported!');
+    }
   }
 }
