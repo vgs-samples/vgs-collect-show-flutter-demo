@@ -56,8 +56,9 @@ class CustomCardDataCollectView: UIView {
 		field.font = UIFont.systemFont(ofSize: 15)
 		// Update validation rules
 
-		field.placeholder = "MM/YYYY"
-		field.monthPickerFormat = .longSymbols
+		field.placeholder = "YYYY/MM"
+		field.monthPickerFormat = .numbers
+    field.yearPickeFormat = .long
 
 		return field
 	}()
@@ -84,8 +85,8 @@ class CustomCardDataCollectView: UIView {
 
 		addSubview(stackView)
 		stackView.pinToSuperviewEdges()
-    stackView.addArrangedSubview(cardHolderField)
-		stackView.addArrangedSubview(cardNumberField)
+//    stackView.addArrangedSubview(cardHolderField)
+//		stackView.addArrangedSubview(cardNumberField)
 		stackView.addArrangedSubview(expDateField)
     stackView.addArrangedSubview(cvcTextField)
 
@@ -106,20 +107,23 @@ class CustomCardDataCollectView: UIView {
   /// Configure fields with VGS Collect instance.
   /// - Parameter vgsCollect: `VGSCollect` object, VGS Collect instance.
 	func configureFieldsWithCollect(_ vgsCollect: VGSCollect) {
-		let cardConfiguration = VGSConfiguration(collector: vgsCollect, fieldName: "cardNumber")
-		cardConfiguration.type = .cardNumber
-		cardNumberField.configuration = cardConfiguration
+//		let cardConfiguration = VGSConfiguration(collector: vgsCollect, fieldName: "cardNumber")
+//		cardConfiguration.type = .cardNumber
+//		cardNumberField.configuration = cardConfiguration
 
-		let expDateConfiguration = VGSExpDateConfiguration(collector: vgsCollect, fieldName: "expDate")
-		expDateConfiguration.isRequiredValidOnly = true
-		expDateConfiguration.type = .expDate
+    let expDateConfiguration = VGSExpDateConfiguration(collector: vgsCollect, fieldName: "expDate")
+    expDateConfiguration.isRequiredValidOnly = true
+    expDateConfiguration.type = .expDate
     expDateConfiguration.inputSource = .keyboard
+    expDateConfiguration.inputDateFormat = .longYearThenMonth
+    expDateConfiguration.outputDateFormat = .longYearThenMonth
 
-		// Default .expDate format is "##/##"
-		expDateConfiguration.formatPattern = "##/####"
-		expDateConfiguration.validationRules = VGSValidationRuleSet(rules: [
-			VGSValidationRuleCardExpirationDate(dateFormat: .longYear, error: VGSValidationErrorType.expDate.rawValue)
-		])
+    // Default .expDate format is "##/##"
+    expDateConfiguration.formatPattern = "####/##"
+    expDateConfiguration.validationRules = VGSValidationRuleSet(rules: [
+      VGSValidationRuleCardExpirationDate(dateFormat: .longYearThenMonth, error: VGSValidationErrorType.expDate.rawValue)
+    ])
+
 
     let cvcConfiguration = VGSConfiguration(collector: vgsCollect, fieldName: "card_cvc")
     cvcConfiguration.isRequired = true
@@ -128,12 +132,12 @@ class CustomCardDataCollectView: UIView {
     cvcTextField.configuration = cvcConfiguration
     cvcTextField.isSecureTextEntry = true
 
-    let holderConfiguration = VGSConfiguration(collector: vgsCollect, fieldName: "cardHolder_name")
-    holderConfiguration.type = .cardHolderName
-    holderConfiguration.keyboardType = .namePhonePad
-
-    cardHolderField.textAlignment = .natural
-    cardHolderField.configuration = holderConfiguration
+//    let holderConfiguration = VGSConfiguration(collector: vgsCollect, fieldName: "cardHolder_name")
+//    holderConfiguration.type = .cardHolderName
+//    holderConfiguration.keyboardType = .namePhonePad
+//
+//    cardHolderField.textAlignment = .natural
+//    cardHolderField.configuration = holderConfiguration
 
 		expDateField.configuration = expDateConfiguration
 	}
