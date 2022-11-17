@@ -1,14 +1,16 @@
 package com.verygoodsecurity.vgs_collect_flutter_demo
 
 import android.content.Intent
-import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect.CardIO
+import com.verygoodsecurity.api.cardio.ScanActivity
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect.CollectCardView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect.CollectCardViewFactory
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.collect.CollectShowCardView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.collect.CollectShowCardViewFactory
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.show.ShowCardView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.show.ShowCardViewFactory
-import com.verygoodsecurity.api.cardio.ScanActivity
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.CardIO
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.tokenization.TokenizationCardView
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.tokenization.TokenizationCardViewFactory
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 
@@ -27,8 +29,11 @@ class MainActivity : FlutterActivity(), CardIO {
             CollectShowCardViewFactory(flutterEngine.dartExecutor.binaryMessenger)
         )
         registry.registerViewFactory(
-            ShowCardView.VIEW_TYPE,
-            ShowCardViewFactory(flutterEngine.dartExecutor.binaryMessenger)
+            ShowCardView.VIEW_TYPE, ShowCardViewFactory(flutterEngine.dartExecutor.binaryMessenger)
+        )
+        registry.registerViewFactory(
+            TokenizationCardView.VIEW_TYPE,
+            TokenizationCardViewFactory(this, flutterEngine.dartExecutor.binaryMessenger)
         )
     }
 
@@ -53,7 +58,6 @@ class MainActivity : FlutterActivity(), CardIO {
             this[expiry] = ScanActivity.CARD_EXP_DATE
             this[cvc] = ScanActivity.CARD_CVC
         })
-
         startActivityForResult(intent, 1)
     }
 }

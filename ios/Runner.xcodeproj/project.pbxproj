@@ -18,6 +18,10 @@
 		443E119E28D9F50F0048F2B5 /* FlutterShowCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E119D28D9F50F0048F2B5 /* FlutterShowCardView.swift */; };
 		443E11A028D9FA410048F2B5 /* FlutterShowPlatformViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E119F28D9FA410048F2B5 /* FlutterShowPlatformViewFactory.swift */; };
 		443E11A228D9FA830048F2B5 /* FlutterShowViewPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443E11A128D9FA830048F2B5 /* FlutterShowViewPlugin.swift */; };
+		4468CB8A290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468CB89290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift */; };
+		4468CB8C290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468CB8B290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift */; };
+		4468CB8E290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468CB8D290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift */; };
+		4468CB90290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4468CB8F290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift */; };
 		44D6EA3528C384EA00547183 /* CustomCardDataCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D6EA3428C384EA00547183 /* CustomCardDataCollectView.swift */; };
 		44D6EA3728C3854500547183 /* FlutterCustomCardDataCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D6EA3628C3854500547183 /* FlutterCustomCardDataCollectView.swift */; };
 		44D6EA3928C385E000547183 /* FlutterCustomCardDataCollectViewPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D6EA3828C385E000547183 /* FlutterCustomCardDataCollectViewPlugin.swift */; };
@@ -56,6 +60,10 @@
 		443E119D28D9F50F0048F2B5 /* FlutterShowCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterShowCardView.swift; sourceTree = "<group>"; };
 		443E119F28D9FA410048F2B5 /* FlutterShowPlatformViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterShowPlatformViewFactory.swift; sourceTree = "<group>"; };
 		443E11A128D9FA830048F2B5 /* FlutterShowViewPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterShowViewPlugin.swift; sourceTree = "<group>"; };
+		4468CB89290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizeCardDataCollectView.swift; sourceTree = "<group>"; };
+		4468CB8B290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterTokenizeCardDataCollectView.swift; sourceTree = "<group>"; };
+		4468CB8D290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterTokenizeCardDataCollectViewFactory.swift; sourceTree = "<group>"; };
+		4468CB8F290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterTokenizeCardDataCollectViewPlugin.swift; sourceTree = "<group>"; };
 		44D6EA3428C384EA00547183 /* CustomCardDataCollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardDataCollectView.swift; sourceTree = "<group>"; };
 		44D6EA3628C3854500547183 /* FlutterCustomCardDataCollectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterCustomCardDataCollectView.swift; sourceTree = "<group>"; };
 		44D6EA3828C385E000547183 /* FlutterCustomCardDataCollectViewPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterCustomCardDataCollectViewPlugin.swift; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 		4433F09428D05CB200355BC5 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				4468CB87290FD6CD00B2AFE5 /* CollectCardTokenization */,
 				443E119028D9EB660048F2B5 /* CollectShowData */,
 				4433F09528D05CB900355BC5 /* CustomCardData */,
 			);
@@ -165,6 +174,25 @@
 				443E119728D9ECCC0048F2B5 /* FlutterCardDataCollectViewFactory.swift */,
 			);
 			path = CollectCardData;
+			sourceTree = "<group>";
+		};
+		4468CB87290FD6CD00B2AFE5 /* CollectCardTokenization */ = {
+			isa = PBXGroup;
+			children = (
+				4468CB88290FD6E600B2AFE5 /* CollectView */,
+			);
+			path = CollectCardTokenization;
+			sourceTree = "<group>";
+		};
+		4468CB88290FD6E600B2AFE5 /* CollectView */ = {
+			isa = PBXGroup;
+			children = (
+				4468CB89290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift */,
+				4468CB8B290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift */,
+				4468CB8D290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift */,
+				4468CB8F290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift */,
+			);
+			path = CollectView;
 			sourceTree = "<group>";
 		};
 		44D6EA3328C384D900547183 /* CollectView */ = {
@@ -392,10 +420,14 @@
 				44D6EA3728C3854500547183 /* FlutterCustomCardDataCollectView.swift in Sources */,
 				44D6EA3528C384EA00547183 /* CustomCardDataCollectView.swift in Sources */,
 				443E11A228D9FA830048F2B5 /* FlutterShowViewPlugin.swift in Sources */,
+				4468CB8E290FE76500B2AFE5 /* FlutterTokenizeCardDataCollectViewFactory.swift in Sources */,
+				4468CB90290FE7BA00B2AFE5 /* FlutterTokenizeCardDataCollectViewPlugin.swift in Sources */,
 				443E119E28D9F50F0048F2B5 /* FlutterShowCardView.swift in Sources */,
+				4468CB8C290FE3D200B2AFE5 /* FlutterTokenizeCardDataCollectView.swift in Sources */,
 				44D6EA3B28C3860D00547183 /* FlutterCustomCardDataCollectViewFactory.swift in Sources */,
 				443E119428D9EC120048F2B5 /* FlutterCardDataCollectView.swift in Sources */,
 				443E119C28D9F2F40048F2B5 /* ShowCardView.swift in Sources */,
+				4468CB8A290FD6FD00B2AFE5 /* TokenizeCardDataCollectView.swift in Sources */,
 				443E11A028D9FA410048F2B5 /* FlutterShowPlatformViewFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

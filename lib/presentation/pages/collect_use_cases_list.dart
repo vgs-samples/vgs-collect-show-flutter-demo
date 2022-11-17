@@ -42,6 +42,17 @@ class CollectUseCasesList extends StatelessWidget {
               SizedBox(
                 height: 8,
               ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.tokenizeCardData);
+                },
+                child: CollectUseCaseItem(
+                  title: 'Tokenize Card Data',
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
             ],
           ),
         ),

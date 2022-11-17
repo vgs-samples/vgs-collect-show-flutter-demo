@@ -8,6 +8,7 @@ VGS don't have official Flutter package. You can easily integrate VGS Collect SD
 <!--ts-->
 
 - [Run application](#run-application)
+- [Run VGSCollect tokenization use case](#run-vgscollect-tokenization-use-case)
 - [Run VGSShow use case](#run-vgsshow-use-case)
 - [iOS VGSCollect integration guide](#ios-vgscollect-integration-guide)
 - [Android VGSCollect integration guide](#android-integration-guide)
@@ -71,6 +72,10 @@ Click on "open a file", then navigate to the main.dart file and then click debug
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
    <img src="images/vgs_collect_flutter_demo_android.gif?raw=true" width="200" alt="VGS Collect Android Flutter demo" hspace="20">
 </p>
+
+## Run VGSCollect tokenization use case
+
+Check [VGSCollect tokenization use case here](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/lib/presentation/pages/collect_tokenization).
 
 ## Run VGSShow use case
 
@@ -173,6 +178,7 @@ dependencies {
 | com.verygoodsecurity.vgs_collect_flutter_demo.view              | All platform views and factories.                            |
 | com.verygoodsecurity.vgs_collect_flutter_demo.view.collect      | Platform view and factory used in custom example.            |
 | com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show | Platform views and factories used in collect & show example. |
+| com.verygoodsecurity.vgs_collect_flutter_demo.view.tokenization | Platform views and factories used in tokenization example.   |
 
 ## Flutter integration guide
 

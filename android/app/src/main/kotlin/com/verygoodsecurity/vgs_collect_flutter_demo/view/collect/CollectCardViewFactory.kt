@@ -1,6 +1,7 @@
 package com.verygoodsecurity.vgs_collect_flutter_demo.view.collect
 
 import android.content.Context
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.CardIO
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.StandardMessageCodec
 import io.flutter.plugin.platform.PlatformViewFactory
