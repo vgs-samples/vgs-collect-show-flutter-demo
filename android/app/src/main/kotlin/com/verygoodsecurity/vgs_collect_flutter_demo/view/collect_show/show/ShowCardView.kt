@@ -5,6 +5,7 @@ import android.util.Log
 import com.verygoodsecurity.vgs_collect_flutter_demo.R
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.verygoodsecurity.vgsshow.VGSShow
+import com.verygoodsecurity.vgsshow.core.VGSEnvironment.Companion.toVGSEnvironment
 import com.verygoodsecurity.vgsshow.core.listener.VGSOnResponseListener
 import com.verygoodsecurity.vgsshow.core.network.client.VGSHttpMethod
 import com.verygoodsecurity.vgsshow.core.network.model.VGSResponse
@@ -51,11 +52,10 @@ class ShowCardView constructor(
     }
 
     private fun configure(arguments: Map<*, *>?) {
-        show = VGSShow(
-            context,
-            arguments?.get("vault_id") as? String ?: "",
-            arguments?.get("environment") as? String ?: ""
-        )
+        show = VGSShow.Builder(context, arguments?.get("vault_id") as? String ?: "")
+            .setEnvironment((arguments?.get("environment") as? String ?: "").toVGSEnvironment())
+            .setHostname(arguments?.get("custom_hostname") as? String ?: "") // Here we read & set CUSTOM_HOST_NAME from arguments which passed from flutter(dart)
+            .build()
         show?.subscribe(vgsTvPersonName)
         show?.subscribe(vgsTvCardNumber)
         show?.subscribe(vgsTvExpiry)
@@ -65,7 +65,7 @@ class ShowCardView constructor(
     private fun revealCard(arguments: Map<*, *>?, result: MethodChannel.Result) {
         this.result = result
         show?.requestAsync(
-            arguments?.get("path") as? String ?: "",
+            arguments?.get("path") as? String ?: "", // Here we read & set PATH from arguments which passed from flutter(dart)
             VGSHttpMethod.POST,
             readPayload(arguments)
         )

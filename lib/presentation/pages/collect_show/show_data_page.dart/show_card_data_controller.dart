@@ -12,13 +12,14 @@ class ShowCardDataController {
   Future<void> configureShow() async {
     return await channel.invokeMethod(MethodNames.configureShow, {
       'vault_id': CollectShowConstants.vaultID,
-      'environment': CollectShowConstants.environment
+      'environment': CollectShowConstants.environment,
+      'custom_hostname': CollectShowConstants.customHostname, // Here we pass CUSTOM_HOST_NAME to native android
     });
   }
 
   Future<Map<dynamic, dynamic>> revealData(dynamic payload, String path) async {
     return await channel.invokeMethod(
-        MethodNames.revealCard, {'payload': payload, 'path': path});
+        MethodNames.revealCard, {'payload': payload, 'path': path}); // Here we pass PATH to native android
   }
 
   Future<void> copyCardNumber() async {

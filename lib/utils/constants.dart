@@ -31,5 +31,6 @@ class EventPayloadNames {
 class CollectShowConstants {
   static const vaultID = 'vault_id';
   static const environment = 'sandbox';
+  static const customHostname = 'customHostname';
   static const revealPath = 'post';
 }
