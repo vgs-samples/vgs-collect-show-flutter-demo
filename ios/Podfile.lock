@@ -1,47 +1,38 @@
 PODS:
   - CardIOSDK (5.5.7)
-  - MBBlinkCard (2.6.0)
-  - VGSCollectSDK (1.11.2):
-    - VGSCollectSDK/Core (= 1.11.2)
-  - VGSCollectSDK/BlinkCard (1.11.2):
-    - MBBlinkCard (= 2.6.0)
+  - MBBlinkCard (2.7.0)
+  - VGSCollectSDK (1.12.0):
+    - VGSCollectSDK/Core (= 1.12.0)
+  - VGSCollectSDK/BlinkCard (1.12.0):
+    - MBBlinkCard (= 2.7.0)
     - VGSCollectSDK/Core
-  - VGSCollectSDK/CardIO (1.11.2):
+  - VGSCollectSDK/CardIO (1.12.0):
     - CardIOSDK (= 5.5.7)
     - VGSCollectSDK/Core
-  - VGSCollectSDK/Core (1.11.2)
+  - VGSCollectSDK/Core (1.12.0)
   - VGSShowSDK (1.1.4):
     - VGSShowSDK/Core (= 1.1.4)
   - VGSShowSDK/Core (1.1.4)
 
 DEPENDENCIES:
-  - "VGSCollectSDK (from `git@github.com:verygoodsecurity/vgs-collect-ios.git`, branch `feature/iOSSDK-464/card_scanner`)"
-  - "VGSCollectSDK/BlinkCard (from `git@github.com:verygoodsecurity/vgs-collect-ios.git`, branch `feature/iOSSDK-464/card_scanner`)"
-  - "VGSCollectSDK/CardIO (from `git@github.com:verygoodsecurity/vgs-collect-ios.git`, branch `feature/iOSSDK-464/card_scanner`)"
-  - VGSShowSDK
+  - VGSCollectSDK (= 1.12.0)
+  - VGSCollectSDK/BlinkCard (= 1.12.0)
+  - VGSCollectSDK/CardIO (= 1.12.0)
+  - VGSShowSDK (= 1.1.4)
 
 SPEC REPOS:
   trunk:
     - CardIOSDK
     - MBBlinkCard
+    - VGSCollectSDK
     - VGSShowSDK
-
-EXTERNAL SOURCES:
-  VGSCollectSDK:
-    :branch: feature/iOSSDK-464/card_scanner
-    :git: "git@github.com:verygoodsecurity/vgs-collect-ios.git"
-
-CHECKOUT OPTIONS:
-  VGSCollectSDK:
-    :commit: b8be5b292efc7a1dd31058a6dceb3677ce070319
-    :git: "git@github.com:verygoodsecurity/vgs-collect-ios.git"
 
 SPEC CHECKSUMS:
   CardIOSDK: 56bb14c8c0af19f1c3e1ef36215b6801b68df34c
-  MBBlinkCard: 527d304aeccfad06c3d53963106293cca27ea8d6
-  VGSCollectSDK: 78fc3f8ceed2e87fa0baa50478d97feec93da89f
+  MBBlinkCard: 3bcbdc50dc5b1cc359c63b169eefadef5dd05b01
+  VGSCollectSDK: 2f04a6943cd97c96e9c954456b900b2edde535a0
   VGSShowSDK: 994bfab4f0774a7ccc7fcf55530f09b8ddd6b6d5
 
-PODFILE CHECKSUM: 37a282edd4a77c2c985eaf18ad2b8252764ffc52
+PODFILE CHECKSUM: 068eccfd9d9d72117d70af1c72f7be889df9a7d8
 
 COCOAPODS: 1.11.3
