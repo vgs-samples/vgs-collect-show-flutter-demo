@@ -2,13 +2,10 @@ package com.verygoodsecurity.vgs_collect_flutter_demo.view.core
 
 import android.content.Intent
 
-interface CardIO {
+interface Scanner {
 
     fun start(
-        cardNumber: String,
-        cardHolderName: String,
-        expiry: String,
-        cvc: String,
+        params: ScannerParams,
         onResult: (requestCode: Int, resultCode: Int, data: Intent?) -> Unit
     )
 
