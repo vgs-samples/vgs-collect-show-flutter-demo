@@ -91,11 +91,39 @@ class _CustomCardDataPageState extends State<CustomCardDataPage> {
                         height: 50,
                         child: ElevatedButton.icon(
                           onPressed: () async {
-                            await _collectController.presentCardIO();
+                            if (CollectShowConstants
+                                .hasMicroBlinkLicenceKey()) {
+                              // MicroBlink initializer can produce errors.
+                              var result =
+                                  await _collectController.presentMicroBlink();
+                              var resultData =
+                                  new Map<String, dynamic>.from(result);
+                              if (resultData[
+                                      EventPayloadNames.microBlinkErrorCode] !=
+                                  null) {
+                                print('MicroBlink error!');
+                                print(resultData[
+                                    EventPayloadNames.microBlinkErrorCode]);
+
+                                SnackBarUtils.showSnackBar(
+                                  context,
+                                  text:
+                                      'Cannot init MicroBlink with ${resultData[EventPayloadNames.microBlinkErrorCode]} error',
+                                  color: Colors.red,
+                                );
+                              }
+                            } else {
+                              SnackBarUtils.showSnackBar(
+                                context,
+                                text:
+                                    'Please set MicroBlink licence key to constants.dart',
+                                color: Colors.red,
+                              );
+                            }
                           },
                           icon: Icon(Icons.photo_camera),
                           label: Text(
-                            'SCAN',
+                            'MicroBlink',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -134,7 +162,6 @@ class _CustomCardDataPageState extends State<CustomCardDataPage> {
   }
 
   Widget _cardCollectNativeiOS() {
-    print('_cardCollectNativeiOS');
     final Map<String, dynamic> creationParams = <String, dynamic>{};
     return Column(children: [
       SizedBox(

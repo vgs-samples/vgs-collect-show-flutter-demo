@@ -6,10 +6,9 @@ target 'Runner' do
   use_frameworks!
 
   # Pods for Runner
-  pod 'VGSCollectSDK'
-  pod 'VGSShowSDK'
-
-	# Add CardIO module to use Card.io as scan provider
-	pod 'VGSCollectSDK/CardIO' 
+  pod 'VGSCollectSDK', '1.12.0'
+  pod 'VGSCollectSDK/BlinkCard', '1.12.0'
+  pod 'VGSCollectSDK/CardIO', '1.12.0'
+  pod 'VGSShowSDK', '1.1.4'
 
 end
