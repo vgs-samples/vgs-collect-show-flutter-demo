@@ -81,7 +81,7 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
       case "presentMicroBlink":
         guard let payload = call.arguments as? [String: Any],
               let licenceKey = payload["licenceKey"] as? String else {
-          assertionFailure("Invalid config for micro blink scanner!")
+          print("Invalid config for BlinkCard scanner!")
           return
         }
         var scannerPayload = [String: Any]()
