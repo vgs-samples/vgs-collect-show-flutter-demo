@@ -1,6 +1,8 @@
 package com.verygoodsecurity.vgs_collect_flutter_demo
 
 import android.content.Intent
+import com.microblink.blinkcard.MicroblinkSDK
+import com.verygoodsecurity.api.blinkcard.VGSBlinkCardIntentBuilder
 import com.verygoodsecurity.api.cardio.ScanActivity
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect.CollectCardView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect.CollectCardViewFactory
@@ -8,13 +10,14 @@ import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.collect.C
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.collect.CollectShowCardViewFactory
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.show.ShowCardView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.collect_show.show.ShowCardViewFactory
-import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.CardIO
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.Scanner
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.ScannerParams
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.tokenization.TokenizationCardView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.tokenization.TokenizationCardViewFactory
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 
-class MainActivity : FlutterActivity(), CardIO {
+class MainActivity : FlutterActivity(), Scanner {
 
     private var onResult: ((requestCode: Int, resultCode: Int, data: Intent?) -> Unit)? = null
 
@@ -44,19 +47,34 @@ class MainActivity : FlutterActivity(), CardIO {
     }
 
     override fun start(
-        cardNumber: String,
-        cardHolderName: String,
-        expiry: String,
-        cvc: String,
+        params: ScannerParams,
         onResult: (requestCode: Int, resultCode: Int, data: Intent?) -> Unit
     ) {
         this.onResult = onResult
+        when(params) {
+            is ScannerParams.Blinkcard -> startBlinkcard(params)
+            is ScannerParams.CardIO -> startCardIO(params)
+        }
+    }
+
+    private fun startBlinkcard(params: ScannerParams.Blinkcard) {
+        MicroblinkSDK.setLicenseKey(params.licenseKey, applicationContext)
+        val intent = VGSBlinkCardIntentBuilder(this.activity)
+            .setCardHolderFieldName(params.cardHolderNameFieldName)
+            .setCardNumberFieldName(params.cardNumberFieldName)
+            .setExpirationDateFieldName(params.expiryFieldName)
+            .setCVCFieldName(params.cvcFieldName)
+            .build()
+        startActivityForResult(intent, 1)
+    }
+
+    private fun startCardIO(params: ScannerParams.CardIO) {
         val intent = Intent(this, ScanActivity::class.java)
         intent.putExtra(ScanActivity.SCAN_CONFIGURATION, hashMapOf<String?, Int>().apply {
-            this[cardHolderName] = ScanActivity.CARD_HOLDER
-            this[cardNumber] = ScanActivity.CARD_NUMBER
-            this[expiry] = ScanActivity.CARD_EXP_DATE
-            this[cvc] = ScanActivity.CARD_CVC
+            this[params.cardNumberFieldName] = ScanActivity.CARD_HOLDER
+            this[params.cardNumberFieldName] = ScanActivity.CARD_NUMBER
+            this[params.expiryFieldName] = ScanActivity.CARD_EXP_DATE
+            this[params.cvcFieldName] = ScanActivity.CARD_CVC
         })
         startActivityForResult(intent, 1)
     }

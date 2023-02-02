@@ -2,12 +2,13 @@ package com.verygoodsecurity.vgs_collect_flutter_demo.view.collect
 
 import android.content.Context
 import androidx.annotation.CallSuper
-import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.google.gson.Gson
 import com.verygoodsecurity.vgs_collect_flutter_demo.R
 import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.fromJson
 import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.toFormattedJson
-import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.CardIO
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.Scanner
+import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.ScannerParams
 import com.verygoodsecurity.vgscollect.core.HTTPMethod
 import com.verygoodsecurity.vgscollect.core.VGSCollect
 import com.verygoodsecurity.vgscollect.core.VgsCollectResponseListener
@@ -24,7 +25,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
 class CollectCardView constructor(
-    private val cardIO: CardIO, context: Context, messenger: BinaryMessenger, id: Int
+    private val scanner: Scanner, context: Context, messenger: BinaryMessenger, id: Int
 ) : BasePlatformView(VIEW_TYPE, context, messenger, id, R.layout.collect_form_layout),
     VgsCollectResponseListener {
 
@@ -43,7 +44,7 @@ class CollectCardView constructor(
             "showKeyboard" -> requestFocusAndShowKeyboard(vgsEtPersonName)
             "hideKeyboard" -> vgsEtPersonName.hideKeyboard()
             "isFormValid" -> isFormValid(result)
-            "presentCardIO" -> presentCardIO()
+            "presentMicroBlink" -> presentCardIO()
             "redactCard" -> redactCard(result)
         }
     }
@@ -83,15 +84,18 @@ class CollectCardView constructor(
 
     private fun presentCardIO() {
         collect?.let {
-            cardIO.start(
-                vgsEtCardNumber.getFieldName() ?: "",
-                vgsEtPersonName.getFieldName() ?: "",
-                vgsEtExpiry.getFieldName() ?: "",
-                vgsEtCVC.getFieldName() ?: "",
+            scanner.start(
+                ScannerParams.Blinkcard(
+                    vgsEtCardNumber.getFieldName() ?: "",
+                    vgsEtPersonName.getFieldName() ?: "",
+                    vgsEtExpiry.getFieldName() ?: "",
+                    vgsEtCVC.getFieldName() ?: "",
+                    ""
+                )
             ) { requestCode, resultCode, data ->
                 collect?.onActivityResult(requestCode, resultCode, data)
                 methodChannel.invokeMethod(
-                    if (resultCode == CardIO.RESULT_CODE_CANCEL) "userDidCancelScan" else "userDidFinishScan",
+                    if (resultCode == Scanner.RESULT_CODE_CANCEL) "userDidCancelScan" else "userDidFinishScan",
                     null
                 )
             }
