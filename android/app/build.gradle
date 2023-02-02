@@ -68,9 +68,10 @@ flutter {
 
 dependencies {
 
-    implementation 'com.verygoodsecurity:vgscollect:1.7.3'
+    implementation 'com.verygoodsecurity:vgscollect:1.7.5'
     implementation 'com.verygoodsecurity:vgsshow:1.2.0'
     implementation 'com.verygoodsecurity:adapter-cardio:1.0.3'
+    implementation 'com.verygoodsecurity:adapter-blinkcard:1.0.0'
 
     implementation 'com.google.code.gson:gson:2.9.1'
 }

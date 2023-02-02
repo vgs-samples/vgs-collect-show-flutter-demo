@@ -28,8 +28,11 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
   /// View id.
   let viewId: Int64
 
-  /// CardIO controller.
-  let cardIOController: VGSCardIOScanController
+//  /// CardIO controller.
+//  let cardIOController: VGSCardIOScanController
+
+  /// MicroBlink controller.
+  var microBlinkController: VGSBlinkCardController?
 
   // MARK: - Initialization.
 
@@ -50,10 +53,10 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
     // Create flutter method channel.
     self.channel = FlutterMethodChannel(name: "card-collect-form-view/\(viewId)",
                                         binaryMessenger: messenger)
-    self.cardIOController = VGSCardIOScanController()
+//    self.cardIOController = VGSCardIOScanController()
 
     super.init()
-    self.cardIOController.delegate = self
+//    self.cardIOController.delegate = self
 
     // Handle methods from Flutter.
     channel.setMethodCallHandler({[weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
@@ -71,9 +74,25 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
       case "hideKeyboard":
         self?.collectView.endEditing(true)
         result(nil)
-      case "presentCardIO":
+//      case "presentCardIO":
+//        let vc = UIApplication.shared.windows.first!.rootViewController!
+//        self?.cardIOController.presentCardScanner(on: vc, animated: true, modalPresentationStyle: .fullScreen, completion: nil)
+//        result(nil)
+      case "presentMicroBlink":
+        guard let payload = call.arguments as? [String: Any],
+              let licenceKey = payload["licenceKey"] as? String else {
+          print("Invalid config for BlinkCard scanner!")
+          return
+        }
+        var scannerPayload = [String: Any]()
         let vc = UIApplication.shared.windows.first!.rootViewController!
-        self?.cardIOController.presentCardScanner(on: vc, animated: true, modalPresentationStyle: .fullScreen, completion: nil)
+        self?.microBlinkController = VGSBlinkCardController(licenseKey: licenceKey, onError: { code in
+          scannerPayload["MicroBlinkErrorCode"] = code
+          result(scannerPayload)
+        })
+        self?.microBlinkController?.delegate = self
+        self?.microBlinkController?.presentCardScanner(on: vc, animated: true, completion: nil)
+        result(scannerPayload)
       default:
         result(FlutterMethodNotImplemented)
       }
@@ -177,24 +196,23 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
 // MARK: - VGSCardIOScanControllerDelegate
 
 // no:doc
-extension FlutterCustomCardDataCollectView: VGSCardIOScanControllerDelegate {
+extension FlutterCustomCardDataCollectView: VGSBlinkCardControllerDelegate {
 
   // no:doc
   func userDidFinishScan() {
-    self.cardIOController.dismissCardScanner(animated: true, completion: {
+    self.microBlinkController?.dismissCardScanner(animated: true, completion: {
       self.channel.invokeMethod("userDidFinishScan", arguments: nil)
     })
   }
 
   // no:doc
   func userDidCancelScan() {
-    self.cardIOController.dismissCardScanner(animated: true, completion: {
+    self.microBlinkController?.dismissCardScanner(animated: true, completion: {
       self.channel.invokeMethod("userDidCancelScan", arguments: nil)
     })
   }
 
-  // no:doc
-  func textFieldForScannedData(type: CradIODataType) -> VGSTextField? {
+  func textFieldForScannedData(type: VGSBlinkCardDataType) -> VGSTextField? {
     switch type {
     case .cardNumber:
       return collectView.cardNumberField

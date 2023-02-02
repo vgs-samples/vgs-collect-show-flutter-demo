@@ -52,6 +52,15 @@ class CollectShowConstants {
 }
 ```
 
+5. For `BlinkCard` add your licence keys for `iOS` and `Android` to `constants.dart` file.
+
+```dart
+class CollectShowConstants {
+  static const microBlinkiOSLicenceKey = 'ios_licence_key';
+  static const microBlinkAndroidLicenceKey = 'android_licence_key';
+}
+```
+
 5. Run flutter app:\
    On iOS Simulator (<a href="https://flutter.dev/docs/get-started/install/macos#set-up-the-ios-simulator" target="_blank">Run iOS app Flutter docs</a>).\
    On Android Simulator (<a href="https://docs.flutter.dev/get-started/install/macos#set-up-the-android-emulator" target="_blank">Run Android app Flutter docs</a>).
@@ -109,6 +118,7 @@ target 'Runner' do
   pod 'VGSCollectSDK'
   pod 'VGSShowSDK'
   pod 'VGSCollectSDK/CardIO'
+  pod 'VGSCollectSDK/BlinkCard'
 
 end
 ```
@@ -119,7 +129,20 @@ Make sure deployment minimal iOS version of your target and project is set to `i
   pod update
 ```
 
-For `CardIO` include `NSCameraUsageDescription` key in iOS project `info.plist` to enable Camera in your iOS application.
+You can add a card scanning solution to your application by adding `VGSCollect/BlinkCard` module.
+It provides a fast and easy way to scan payment cards and import them to VGS Collect.
+
+<Note
+message="Note"
+type="info"
+description='
+VGS offer PCI solution for BlinkCard integration.
+
+Please contact with <a href="https://github.com/blinkcard/blinkcard-ios/issues" target="_blank"> BlinkCard team</a> if you have any issues related to card scanner work.'/>
+
+Using `BlinkCard` in your app requires a valid license key. To get your license key you should contact [MicroBlink](https://microblink.com/).
+
+For `CardIO` and `BlinkCard` include `NSCameraUsageDescription`key in iOS project`info.plist` to enable Camera in your iOS application.
 
 ```xml
     <key>NSCameraUsageDescription</key>
@@ -132,12 +155,12 @@ For `CardIO` include `NSCameraUsageDescription` key in iOS project `info.plist` 
 
 3. Check our [implementation](https://github.com/vgs-samples/vgs-collect-show-flutter-demo/tree/master/ios/Runner/UseCases/CustomCardData/CollectView).
 
-| File                                          | Description                                                                                                                          |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| CustomCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                                                                   |
-| FlutterCustomCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. Encapsulates FlutterMethodChannel implementation. |
-| FlutterCustomCardDataCollectViewFactory.swift | Platform view factory.                                                                                                               |
-| FlutterCustomCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                                                                      |
+| File                                          | Description                                                                                                                                                                          |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| CustomCardDataCollectView.swift               | Native iOS UIKit view, holds UI and VGSTextFields.                                                                                                                                   |
+| FlutterCustomCardDataCollectView.swift        | Holds Flutter Platform view implementation, VGSCollect instance and configuration. Encapsulates FlutterMethodChannel implementation. Holds logic for MicroBlink scanner integration. |
+| FlutterCustomCardDataCollectViewFactory.swift | Platform view factory.                                                                                                                                                               |
+| FlutterCustomCardDataCollectViewPlugin.swift  | Flutter plugin.                                                                                                                                                                      |
 
 ## Android integration guide
 
