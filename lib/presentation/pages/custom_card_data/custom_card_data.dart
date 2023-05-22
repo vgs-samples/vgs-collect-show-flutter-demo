@@ -237,7 +237,9 @@ class _CustomCardDataPageState extends State<CustomCardDataPage> {
     setState(() {
       _isLoading = true;
     });
-    final result = await _collectController.sendData();
+    final result = await _collectController.sendData({
+      'custom_header': "header",
+    });
     var resultData = new Map<String, dynamic>.from(result);
     final resultStatus = resultData[EventPayloadNames.status];
     if (resultStatus == EventPayloadNames.success) {

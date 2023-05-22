@@ -12,6 +12,7 @@ import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.ScannerParams
 import com.verygoodsecurity.vgscollect.core.HTTPMethod
 import com.verygoodsecurity.vgscollect.core.VGSCollect
 import com.verygoodsecurity.vgscollect.core.VgsCollectResponseListener
+import com.verygoodsecurity.vgscollect.core.model.network.VGSRequest
 import com.verygoodsecurity.vgscollect.core.model.network.VGSResponse
 import com.verygoodsecurity.vgscollect.core.model.state.FieldState
 import com.verygoodsecurity.vgscollect.core.storage.OnFieldStateChangeListener
@@ -45,7 +46,7 @@ class CollectCardView constructor(
             "hideKeyboard" -> vgsEtPersonName.hideKeyboard()
             "isFormValid" -> isFormValid(result)
             "presentMicroBlink" -> presentCardIO()
-            "redactCard" -> redactCard(result)
+            "redactCard" -> redactCard(call.arguments as? Map<*, *>, result)
         }
     }
 
@@ -102,9 +103,15 @@ class CollectCardView constructor(
         }
     }
 
-    private fun redactCard(result: MethodChannel.Result) {
+    private fun redactCard(arguments: Map<*, *>?, result: MethodChannel.Result) {
         this.result = result
-        collect?.asyncSubmit("/post", HTTPMethod.POST)
+        collect?.asyncSubmit(
+            VGSRequest.VGSRequestBuilder()
+                .setPath("/post")
+                .setMethod(HTTPMethod.POST)
+                .setCustomHeader(mapArgumentsToHeaders(arguments))
+                .build()
+        )
     }
 
     override fun dispose() {
@@ -122,6 +129,18 @@ class CollectCardView constructor(
     private fun requestFocusAndShowKeyboard(inputView: InputFieldView) {
         inputView.requestFocus()
         inputView.showKeyboard()
+    }
+
+    private fun mapArgumentsToHeaders(arguments: Map<*, *>?): Map<String, String> {
+        val headers = mutableMapOf<String, String>()
+        arguments?.forEach {
+            val key = it.key as? String
+            val value = it.value as? String
+            if (key != null && value != null) {
+                headers[key] = value
+            }
+        }
+        return headers
     }
 
     companion object {

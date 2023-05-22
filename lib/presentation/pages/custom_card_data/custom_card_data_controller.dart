@@ -42,7 +42,7 @@ class CustomCardDataController {
     return await channel.invokeMethod(MethodNames.hideKeyboard);
   }
 
-  Future<Map<dynamic, dynamic>> sendData() async {
-    return await channel.invokeMethod(MethodNames.redactCard);
+  Future<Map<dynamic, dynamic>> sendData(Map<String, String> map) async {
+    return await channel.invokeMethod(MethodNames.redactCard, map);
   }
 }
