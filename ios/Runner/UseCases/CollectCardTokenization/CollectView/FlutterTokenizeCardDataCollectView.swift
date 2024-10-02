@@ -70,7 +70,7 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
       case "hideKeyboard":
         self?.collectView.endEditing(true)
         result(nil)
-      case "presentCardIO":
+      case "startCardScanner":
         let vc = UIApplication.shared.windows.first!.rootViewController!
         self?.cardIOController.presentCardScanner(on: vc, animated: true, modalPresentationStyle: .fullScreen, completion: nil)
       default:

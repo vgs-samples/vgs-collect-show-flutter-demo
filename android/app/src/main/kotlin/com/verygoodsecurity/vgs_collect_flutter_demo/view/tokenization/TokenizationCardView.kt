@@ -9,7 +9,6 @@ import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.fromJson
 import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.toFormattedJson
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.Scanner
-import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.ScannerParams
 import com.verygoodsecurity.vgscollect.core.VGSCollect
 import com.verygoodsecurity.vgscollect.core.VgsCollectResponseListener
 import com.verygoodsecurity.vgscollect.core.model.network.VGSResponse
@@ -43,7 +42,7 @@ class TokenizationCardView constructor(
         when (call.method) {
             "configureCollect" -> configureCollect(call.arguments as? Map<*, *>)
             "isFormValid" -> isFormValid(result)
-            "presentCardIO" -> presentCardIO()
+            "startCardScanner" -> startCardScanner(call.arguments as? Map<*, *>)
             "showKeyboard" -> requestFocusAndShowKeyboard(vgsEtPersonName)
             "hideKeyboard" -> {
                 vgsEtPersonName.hideKeyboard()
@@ -86,15 +85,14 @@ class TokenizationCardView constructor(
         result.success(isPersonNameValid() && isCardNumberValid() && isExpiryValid() && isCVCValid())
     }
 
-    private fun presentCardIO() {
+    private fun startCardScanner(arguments: Map<*, *>?) {
         collect?.let {
             scanner.start(
-                ScannerParams.CardIO(
-                    vgsEtCardNumber.getFieldName() ?: "",
-                    vgsEtPersonName.getFieldName() ?: "",
-                    vgsEtExpiry.getFieldName() ?: "",
-                    vgsEtCVC.getFieldName() ?: "",
-                )
+                cardNumberFieldName = vgsEtCardNumber.getFieldName() ?: "",
+                cardHolderNameFieldName = vgsEtPersonName.getFieldName() ?: "",
+                expiryFieldName = vgsEtExpiry.getFieldName() ?: "",
+                cvcFieldName = vgsEtCVC.getFieldName() ?: "",
+                licenseKey = arguments?.get("licenceKey") as? String ?: ""
             ) { requestCode, resultCode, data ->
                 collect?.onActivityResult(requestCode, resultCode, data)
                 methodChannel.invokeMethod(

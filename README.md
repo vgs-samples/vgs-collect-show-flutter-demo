@@ -117,7 +117,6 @@ target 'Runner' do
 
   pod 'VGSCollectSDK'
   pod 'VGSShowSDK'
-  pod 'VGSCollectSDK/CardIO'
   pod 'VGSCollectSDK/BlinkCard'
 
 end
@@ -142,7 +141,7 @@ Please contact with <a href="https://github.com/blinkcard/blinkcard-ios/issues" 
 
 Using `BlinkCard` in your app requires a valid license key. To get your license key you should contact [MicroBlink](https://microblink.com/).
 
-For `CardIO` and `BlinkCard` include `NSCameraUsageDescription`key in iOS project`info.plist` to enable Camera in your iOS application.
+`BlinkCard` requires `NSCameraUsageDescription`key in iOS project`info.plist` to enable Camera in your iOS application.
 
 ```xml
     <key>NSCameraUsageDescription</key>
@@ -185,7 +184,7 @@ dependencies {
 
     implementation 'com.verygoodsecurity:vgscollect:latest_version'
     implementation 'com.verygoodsecurity:vgsshow:latest_version'
-    implementation 'com.verygoodsecurity:adapter-cardio:latest_version'
+    implementation 'com.verygoodsecurity:adapter-blinkcard:latest_version'
 }
 ```
 

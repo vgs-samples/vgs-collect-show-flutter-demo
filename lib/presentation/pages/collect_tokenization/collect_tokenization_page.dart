@@ -98,11 +98,20 @@ class _CollectTokenizeCardPageState extends State<CollectTokenizeCardPage> {
                         height: 50,
                         child: ElevatedButton.icon(
                           onPressed: () async {
-                            await _collectController.presentCardIO();
+                            if (CollectShowConstants.hasMicroBlinkLicenceKey()) {
+                              await _collectController.startCardScanner();
+                            } else {
+                              SnackBarUtils.showSnackBar(
+                                context,
+                                text:
+                                'Please set MicroBlink licence key to constants.dart',
+                                color: Colors.red,
+                              );
+                            }
                           },
                           icon: Icon(Icons.photo_camera),
                           label: Text(
-                            'card.io',
+                            'Card scan',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

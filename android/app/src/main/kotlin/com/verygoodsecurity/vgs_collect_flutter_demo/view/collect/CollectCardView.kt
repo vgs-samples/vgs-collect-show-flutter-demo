@@ -8,7 +8,6 @@ import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.fromJson
 import com.verygoodsecurity.vgs_collect_flutter_demo.extensions.toFormattedJson
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.BasePlatformView
 import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.Scanner
-import com.verygoodsecurity.vgs_collect_flutter_demo.view.core.ScannerParams
 import com.verygoodsecurity.vgscollect.core.HTTPMethod
 import com.verygoodsecurity.vgscollect.core.VGSCollect
 import com.verygoodsecurity.vgscollect.core.VgsCollectResponseListener
@@ -24,7 +23,7 @@ import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-class CollectCardView constructor(
+class CollectCardView(
     private val scanner: Scanner, context: Context, messenger: BinaryMessenger, id: Int
 ) : BasePlatformView(VIEW_TYPE, context, messenger, id, R.layout.collect_form_layout),
     VgsCollectResponseListener {
@@ -44,7 +43,7 @@ class CollectCardView constructor(
             "showKeyboard" -> requestFocusAndShowKeyboard(vgsEtPersonName)
             "hideKeyboard" -> vgsEtPersonName.hideKeyboard()
             "isFormValid" -> isFormValid(result)
-            "presentMicroBlink" -> presentCardIO()
+            "startCardScanner" -> startCardScanner(call.arguments as? Map<*, *>)
             "redactCard" -> redactCard(result)
         }
     }
@@ -82,16 +81,14 @@ class CollectCardView constructor(
         result.success(isPersonNameValid() && isCardNumberValid() && isExpiryValid() && isCVCValid())
     }
 
-    private fun presentCardIO() {
+    private fun startCardScanner(arguments: Map<*, *>?) {
         collect?.let {
             scanner.start(
-                ScannerParams.Blinkcard(
-                    vgsEtCardNumber.getFieldName() ?: "",
-                    vgsEtPersonName.getFieldName() ?: "",
-                    vgsEtExpiry.getFieldName() ?: "",
-                    vgsEtCVC.getFieldName() ?: "",
-                    ""
-                )
+                cardNumberFieldName = vgsEtCardNumber.getFieldName() ?: "",
+                cardHolderNameFieldName = vgsEtPersonName.getFieldName() ?: "",
+                expiryFieldName = vgsEtExpiry.getFieldName() ?: "",
+                cvcFieldName = vgsEtCVC.getFieldName() ?: "",
+                licenseKey = arguments?.get("licenceKey") as? String ?: ""
             ) { requestCode, resultCode, data ->
                 collect?.onActivityResult(requestCode, resultCode, data)
                 methodChannel.invokeMethod(

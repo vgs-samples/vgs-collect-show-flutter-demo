@@ -14,8 +14,7 @@ class MethodNames {
   static const String tokenizeCard = 'tokenizeCard';
   static const String copyCard = 'copyCard';
   static const String isFormValid = 'isFormValid';
-  static const String presentCardIO = 'presentCardIO';
-  static const String presentMicroBlink = 'presentMicroBlink';
+  static const String startCardScanner = 'startCardScanner';
   static const String showKeyboard = 'showKeyboard';
   static const String hideKeyboard = 'hideKeyboard';
   static const String stateDidChange = 'stateDidChange';
@@ -33,15 +32,15 @@ class EventPayloadNames {
 }
 
 class CollectShowConstants {
-  static const vaultID = 'vault_id';
+  static const vaultID = 'tnthu5yiznd';
   static const environment = 'sandbox';
   static const revealPath = 'post';
   static const microBlinkiOSLicenceKey = 'ios_licence_key';
-  static const microBlinkAndroidLicenceKey = 'android_licence_key';
+  static const microBlinkAndroidLicenceKey = 'sRwCAC1jb20udmVyeWdvb2RzZWN1cml0eS52Z3NfY29sbGVjdF9mbHV0dGVyX2RlbW8AbGV5SkRjbVZoZEdWa1QyNGlPakUzTWpjNE9EUTNOVEUyTkRrc0lrTnlaV0YwWldSR2IzSWlPaUl6TUdRMk5qTmtNaTA1WVROaExUUTNZalV0WW1VeE55MHdORFU1TURnMk5URmtOMlFpZlE9PY4uBK1pKGt56C/vrjJ+z2CEUjaE1tbw4n8N4BgSxo55AyE6oSxSmtvVhXKLhVCcPHuoQJG1843VSw3IsxKQGHjTfu6nVo8hEKgZg2QC45+SOSezfq9T0xxJTIMDBQ==';
 
   static bool hasMicroBlinkLicenceKey() {
     if (Platform.isIOS) {
-      return microBlinkiOSLicenceKey != 'ios_licence_key';
+      return true;
     } else if (Platform.isAndroid) {
       return microBlinkAndroidLicenceKey != 'android_licence_key';
     } else {

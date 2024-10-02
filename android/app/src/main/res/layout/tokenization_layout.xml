@@ -36,7 +36,9 @@
             app:cardBrandIconGravity="end"
             app:fieldName="cardNumber"
             app:hint="Card number"
-            app:numberDivider=" " />
+            app:numberDivider=" "
+            app:storageType="PERSISTENT"
+            app:aliasFormat="FPE_SIX_T_FOUR"/>
     </com.verygoodsecurity.vgscollect.widget.VGSTextInputLayout>
 
     <com.verygoodsecurity.vgscollect.widget.VGSTextInputLayout
