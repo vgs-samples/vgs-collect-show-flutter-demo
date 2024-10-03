@@ -22,14 +22,14 @@ class CustomCardDataController {
     return await channel.invokeMethod(MethodNames.isFormValid);
   }
 
-  Future<Map<dynamic, dynamic>> presentMicroBlink() async {
+  Future<Map<dynamic, dynamic>> startCardScanner() async {
     var licenceKey = '';
     if (Platform.isIOS) {
       licenceKey = CollectShowConstants.microBlinkiOSLicenceKey;
     } else if (Platform.isAndroid) {
       licenceKey = CollectShowConstants.microBlinkAndroidLicenceKey;
     }
-    return await channel.invokeMethod(MethodNames.presentMicroBlink, {
+    return await channel.invokeMethod(MethodNames.startCardScanner, {
       'licenceKey': licenceKey,
     });
   }

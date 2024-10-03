@@ -5,7 +5,11 @@ import android.content.Intent
 interface Scanner {
 
     fun start(
-        params: ScannerParams,
+        cardNumberFieldName: String,
+        cardHolderNameFieldName: String,
+        expiryFieldName: String,
+        cvcFieldName: String,
+        licenseKey: String,
         onResult: (requestCode: Int, resultCode: Int, data: Intent?) -> Unit
     )
 

@@ -95,7 +95,7 @@ class _CustomCardDataPageState extends State<CustomCardDataPage> {
                                 .hasMicroBlinkLicenceKey()) {
                               // MicroBlink initializer can produce errors.
                               var result =
-                                  await _collectController.presentMicroBlink();
+                                  await _collectController.startCardScanner();
                               var resultData =
                                   new Map<String, dynamic>.from(result);
                               if (resultData[
@@ -123,7 +123,7 @@ class _CustomCardDataPageState extends State<CustomCardDataPage> {
                           },
                           icon: Icon(Icons.photo_camera),
                           label: Text(
-                            'MicroBlink',
+                            'Card scan',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

@@ -28,9 +28,6 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
   /// View id.
   let viewId: Int64
 
-//  /// CardIO controller.
-//  let cardIOController: VGSCardIOScanController
-
   /// MicroBlink controller.
   var microBlinkController: VGSBlinkCardController?
 
@@ -53,10 +50,8 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
     // Create flutter method channel.
     self.channel = FlutterMethodChannel(name: "card-collect-form-view/\(viewId)",
                                         binaryMessenger: messenger)
-//    self.cardIOController = VGSCardIOScanController()
-
+      
     super.init()
-//    self.cardIOController.delegate = self
 
     // Handle methods from Flutter.
     channel.setMethodCallHandler({[weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
@@ -74,11 +69,7 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
       case "hideKeyboard":
         self?.collectView.endEditing(true)
         result(nil)
-//      case "presentCardIO":
-//        let vc = UIApplication.shared.windows.first!.rootViewController!
-//        self?.cardIOController.presentCardScanner(on: vc, animated: true, modalPresentationStyle: .fullScreen, completion: nil)
-//        result(nil)
-      case "presentMicroBlink":
+      case "startCardScanner":
         guard let payload = call.arguments as? [String: Any],
               let licenceKey = payload["licenceKey"] as? String else {
           print("Invalid config for BlinkCard scanner!")
@@ -193,7 +184,7 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
   }
 }
 
-// MARK: - VGSCardIOScanControllerDelegate
+// MARK: - VGSBlinkCardControllerDelegate
 
 // no:doc
 extension FlutterCustomCardDataCollectView: VGSBlinkCardControllerDelegate {

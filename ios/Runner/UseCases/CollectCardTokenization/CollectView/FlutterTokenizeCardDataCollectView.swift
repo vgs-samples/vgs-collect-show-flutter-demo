@@ -27,8 +27,8 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
   /// View id.
   let viewId: Int64
 
-  /// CardIO controller.
-  let cardIOController: VGSCardIOScanController
+  /// MicroBlink controller.
+  var microBlinkController: VGSBlinkCardController?
 
   // MARK: - Initialization.
 
@@ -49,11 +49,8 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
     // Create flutter method channel.
     self.channel = FlutterMethodChannel(name: "tokenize-card-collect-form-view/\(viewId)",
                                         binaryMessenger: messenger)
-    self.cardIOController = VGSCardIOScanController()
 
     super.init()
-    self.cardIOController.delegate = self
-
     // Handle methods from Flutter.
     channel.setMethodCallHandler({[weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
       switch call.method {
@@ -70,9 +67,21 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
       case "hideKeyboard":
         self?.collectView.endEditing(true)
         result(nil)
-      case "presentCardIO":
+      case "startCardScanner":
+        guard let payload = call.arguments as? [String: Any],
+              let licenceKey = payload["licenceKey"] as? String else {
+          print("Invalid config for BlinkCard scanner!")
+          return
+        }
+        var scannerPayload = [String: Any]()
         let vc = UIApplication.shared.windows.first!.rootViewController!
-        self?.cardIOController.presentCardScanner(on: vc, animated: true, modalPresentationStyle: .fullScreen, completion: nil)
+        self?.microBlinkController = VGSBlinkCardController(licenseKey: licenceKey, onError: { code in
+          scannerPayload["MicroBlinkErrorCode"] = code
+          result(scannerPayload)
+        })
+        self?.microBlinkController?.delegate = self
+        self?.microBlinkController?.presentCardScanner(on: vc, animated: true, completion: nil)
+        result(scannerPayload)
       default:
         result(FlutterMethodNotImplemented)
       }
@@ -180,31 +189,30 @@ class FlutterTokenizeCardDataCollectView: NSObject, FlutterPlatformView {
   }
 }
 
-// MARK: - VGSCardIOScanControllerDelegate
+// MARK: - VGSBlinkCardControllerDelegate
 
 // no:doc
-extension FlutterTokenizeCardDataCollectView: VGSCardIOScanControllerDelegate {
-
+extension FlutterTokenizeCardDataCollectView: VGSBlinkCardControllerDelegate {
+  
   // no:doc
   func userDidFinishScan() {
-    self.cardIOController.dismissCardScanner(animated: true, completion: {
+    self.microBlinkController?.dismissCardScanner(animated: true, completion: {
       self.channel.invokeMethod("userDidFinishScan", arguments: nil)
     })
   }
 
   // no:doc
   func userDidCancelScan() {
-    self.cardIOController.dismissCardScanner(animated: true, completion: {
+    self.microBlinkController?.dismissCardScanner(animated: true, completion: {
       self.channel.invokeMethod("userDidCancelScan", arguments: nil)
     })
   }
 
-  // no:doc
-  func textFieldForScannedData(type: CradIODataType) -> VGSTextField? {
+  func textFieldForScannedData(type: VGSBlinkCardDataType) -> VGSTextField? {
     switch type {
     case .cardNumber:
       return collectView.cardNumberField
-    case .expirationDate:
+    case .expirationDateLong:
       return collectView.expDateField
     case .cvc:
       return collectView.cvcTextField

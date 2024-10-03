@@ -98,7 +98,7 @@ target 'Runner' do
 
   pod 'VGSCollectSDK'
   pod 'VGSShowSDK'
-  pod 'VGSCollectSDK/CardIO'
+  pod 'VGSCollectSDK/BlinkCard'
 
 end
 ```
@@ -109,7 +109,7 @@ Make sure deployment minimal iOS version of your target and project is set to `i
   pod update
 ```
 
-For `CardIO` include `NSCameraUsageDescription` key in iOS project `info.plist` to enable Camera in your iOS application.
+`BlinkCard` requires `NSCameraUsageDescription` key in iOS project `info.plist` to enable Camera in your iOS application.
 
 ```xml
     <key>NSCameraUsageDescription</key>
@@ -152,7 +152,7 @@ dependencies {
 
     implementation 'com.verygoodsecurity:vgscollect:latest_version'
     implementation 'com.verygoodsecurity:vgsshow:latest_version'
-    implementation 'com.verygoodsecurity:adapter-cardio:latest_version'
+    implementation 'com.verygoodsecurity:adapter-blinkcard:latest_version'
 }
 ```
 
