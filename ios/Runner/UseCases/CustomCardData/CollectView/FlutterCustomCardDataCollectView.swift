@@ -184,7 +184,7 @@ class FlutterCustomCardDataCollectView: NSObject, FlutterPlatformView {
   }
 }
 
-// MARK: - VGSCardIOScanControllerDelegate
+// MARK: - VGSBlinkCardControllerDelegate
 
 // no:doc
 extension FlutterCustomCardDataCollectView: VGSBlinkCardControllerDelegate {
